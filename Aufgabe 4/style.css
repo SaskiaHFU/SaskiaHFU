@@ -2,9 +2,12 @@ html, body {
     width: 100%;
     height: 100%;
 }
+
 h1 {
-    color: #75464A;
+    color: #A97E78;
     text-align: center; 
+    padding-top: 10px;
+    margin-bottom: 20px;
     
 }
 
@@ -14,27 +17,39 @@ h1:hover {
 }
 
 h2 {
-    color: #AA7C7A;
+    color: #D8C4B2;
+    text-align: center; 
+    padding-top: 10%;
+    
 }
 
 h3 {
-    color: #c06556;
+    color: #D8C4B2;
+    text-align: center; 
+    padding-top: 10%;
+    padding: 0;
+    
 }
 
 #site-header {
-    background-color: #E8DBD4;
-    font-family: Georgia, Serif;
+    background-color: white;
     margin: 0 auto;
-    border-bottom: 1px solid #797979;
+    border-bottom: 2px solid #797979;
     width: 100%;
-    height: 50px;
-    position: relative;
+    height: auto;
+    
 }
 
-#site-header > nav > ul > li {
+#site-header > .row {
+    display: inline;
+}
+
+nav {
     position: sticky;
     text-align: right;
-    display: inline-block;
+    display: inline;
+    position: fixed;
+    font-size: 1.2rem;
 }
 
 #site-header > a > img {
@@ -42,35 +57,51 @@ h3 {
     width: auto;
     position: relative;
 }
+
 .container-main {
-    width: 95%;
+    width: 100%;
     margin: 30px auto 40px;
+    padding: 0;
+}
+
+.container-main .row .columne-4 {
+    margin-bottom: 10%;
 }
 
 .row {
     flex-flow: row wrap;
-    display: block;
+    display: inline-block;
     padding-right: 1.5625rem;
     padding-left: 1.5625rem;
+    margin: 0;
 }
+
 .row::after {
     content: "";
     clear: both
 }
 
-[class*='columne-'] {
-    float: left;
-    min-height: 1px;
-}
 .columne-1 {
     width: 25%;
+    margin: inherit;
+    display: inline;
+    float: left;
 }
+
 .columne-2 {
     width: 50%;
+    margin: inherit;
+    display: inline;
 }
+
 .columne-4 {
     width: 100%;
+    margin: inherit;
+    display: inline;
+    float: left;
 }
+
+
 
 a:link {
     text-decoration: none;
@@ -87,14 +118,18 @@ a:active {
     text-decoration: palevioletred;
 }
 
+div {
+    display: inline;
+}
+
 body {
-    background-color: #F3EEEA;
-    font-family: Georgia, sans-serif;
+    background-color: #F8F8F7;
+    background-image: url("bg.png");
+    font-family: "Century Gothic", serif;
     font-weight: 400;
     line-height: 1.5;
     color: #797979;
     text-align: center;
-    display: block;
     width: 800px;
     margin: 0 auto;
     letter-spacing: 0.01em;
@@ -108,9 +143,14 @@ body {
     width: 100%;
     text-align: center;
     position: relative;
-    border-color: 15px #75464A;
+    border-color: #75464A;
     border-style: solid;
-    
+    margin: 0;
+    padding: 0;
+}
+
+#poem > h2 {
+    padding: 0;
 }
 
 .traum {
@@ -121,27 +161,28 @@ body {
 
 .visited {
     color: #BEABA7;
-
 }
 
-ol {
-    list-style-type: none;
+ol > li {
+    list-style: none;
     padding: 0;
-    
+    margin: auto;
 }
 
-ul {
-    list-style-type: none;
-    font-family: freight-display-pro serif;
+ul, ol, p {
+    padding: 0;
+    margin-top: 0;
+}
+
+ul > li {
+    list-style: none;
     font-size: 1.125rem;
     line-height: 2.5rem;
     text-transform: uppercase;
+    margin: auto;
+    padding: 0;
     
 }
-li {
-    text-align: center;
-}
-
 
 #message-form {
     background: #fff;
@@ -167,11 +208,6 @@ li {
     margin-top: 50px;
 }
 
-.container-footer > .row > .columne-4 {
-    float: right;
-    box-sizing: inherit;
-}
-
 #contact {
     font-size: 1.25rem;
     letter-spacing: 1px;
@@ -186,15 +222,28 @@ button {
     height: 50px;
     letter-spacing: 1.5px;
     padding: 8px;
+    margin-bottom: 2em;
     width: 100%;
     font-family: inherit;
 }
 
 .container-footer {
+    width: 100%;
+    height: auto;
+    font-size: 1.2rem;
     margin: 0 auto 30px;
     padding: 1em 0 1.7em 0em;
     border-top: 8px solid black;
-    background-color: #DBCBBE;
+    background-color: #ECE9E4;
+}
+
+.container-footer ~ .row ~ li {
+    font-size: 1.2rem;
+    float: right;
+    box-sizing: inherit;
+    display: inline;
+    background-color: #ECE9E4;
+    
 }
 
 div h3 {
@@ -203,7 +252,6 @@ div h3 {
     height: 45;
     font-size: .8125rem;
     display: block;
-    padding: 8px 20px;
     margin: 0 0 9px;
     text-transform: uppercase;
 }
@@ -215,37 +263,58 @@ p + i {
 img[alt="Colmar"] {
     text-transform: uppercase;
 }
+
 img {
     display: inline;
     height: 300px;
     width: auto;
 }
-.icon {
+
+.icon-top {
+    width: 20%;
+    height: auto;
+    margin: 0;
+    text-align: center;
+    display: inline;
+}
+
+.icon-bottom {
     width: 10%;
     height: auto;
     margin: 0;
+    display: inline;
+}
+blockquote + h3 {
+    padding-top: 2em;
+   
 }
 
 @media screen and (min-width:320px){
     h1{
-        width: auto;
-        height: auto;
+       
+        font-size: 0.8rem; 
+    }
+
+    nav {
         
+        font-size: 0.8rem;
+    }
+
+    .container-footer > li {
+        font-size: 0.8rem;
     }
 
 }
 @media screen and (min-width:768px){
     h1{
-        width: auto;
-        height: auto;
+        font-size: 2rem;
         
     }
 
 }
 @media screen and (min-width:1200px){
     h1{
-        width: auto;
-        height: auto;
+        font-size: 2rem;
         
     }
 

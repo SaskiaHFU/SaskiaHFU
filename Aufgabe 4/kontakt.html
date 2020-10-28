@@ -9,47 +9,57 @@
 
 <body>
     <header id="site-header">
-        <a href="index.html">
-            <img src="Logo.jpg" alt="Logo" class="icon">
-        </a>
-        <nav id="nav-items">
-            <a href="ueber_mich.html"> Über Mich </a> <i>|</i>
-            <a href="kontakt.html" class="visited"> Kontakt </a> <i>|</i>
-            <a href="index.html"> Startseite </a> <i>|</i>
-        </nav>
-            
+        <div class="row">
+            <div class="columne-2-header">
+                <a href="index.html">
+                <img src="logo2.jpg" alt="Logo" class="icon-top">
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <nav>
+                <a href="ueber_mich.html"> Über Mich </a> <i>|</i>
+                <a href="kontakt.html" class="visited"> Kontakt </a> <i>|</i>
+                <a href="index.html" > Startseite </a> <i>|</i>
+            </nav>
+        </div>
     </header>
     <div class="container-main">
-        <h2>Meine Kontaktdaten</h2>
-            <p> Falls ihr mehr über Mich wissen möchtet, ist hier meine Email Adresse
-            <b class="mail"> saskia.naomi.schellhammer@hs-furtwangen.de </b>
-            </p>
-            <p>Du kannst aber auch direkt auf den Brief klicken um zu deinem Email-Programm zu kommen.</p>
-            <p>Hier kommst du auch auf meinen Instagram <i class="mail"><a href="https://www.instagram.com/_abelaviagem/" target="_blank">Account</a></i></p>
 
-            <a>Schreibt mir! </a> <sub>Ich freue mich von euch zu hören</sub>
+        <div class="row">
+            <h2>Meine Kontaktdaten</h2>
+                <p> Falls ihr mehr über Mich wissen möchtet, ist hier meine Email Adresse
+                <b class="mail"> saskia.naomi.schellhammer@hs-furtwangen.de </b>
+                </p>
+                <p>Du kannst aber auch direkt auf den Brief klicken um zu deinem Email-Programm zu kommen.</p>
+                <p>Hier kommst du auch auf meinen Instagram <i class="mail"><a href="https://www.instagram.com/_abelaviagem/" target="_blank">Account</a></i></p>
+
+                <a>Schreibt mir! </a> <sub>Ich freue mich von euch zu hören</sub>
     
-       
-    
-        <p id="contact"><strong> Hier ist das Kontaktformular</strong> </p>
-            <form id="message-form">
-                <input class="input-form" placeholder="VORNAME"> 
-                <input class="input-form" placeholder="NACHNAME">
-                <input class="input-form" placeholder="E-MAIL">
-                <input class="input-form" placeholder="NACHRICHT">
-                <p class="input-form">Mit Absenden dieser Nachricht stimmst du dem Datenschutz zu</p>
-                <button name="Absenden" type="submit">Absenden</button>
+        </div>
+        <div class="row">
+            <blockquote id="zitat">
+                <q><i> I think you travel to search and you come back home to find yourself there.</i></q>
+                <p> ― Chimamanda Ngozi Adichie</p>
+            </blockquote>
+            
+            <h3 id="contact"><strong> Hier ist das Kontaktformular</strong> </h3>
+                <form id="message-form">
+                    <input class="input-form" placeholder="VORNAME"> 
+                    <input class="input-form" placeholder="NACHNAME">
+                    <input class="input-form" placeholder="E-MAIL">
+                    <input class="input-form" placeholder="NACHRICHT">
+                    <p class="input-form">Mit Absenden dieser Nachricht stimmst du dem Datenschutz zu</p>
+                    <button name="Absenden" type="submit">Absenden</button>
             </form> 
+        </div>
+
         
-        <blockquote id="zitat">
-            <q><i> I think you travel to search and you come back home to find yourself there.</i></q>
-            <p> ― Chimamanda Ngozi Adichie</p>
-        </blockquote>
     </div>
 
     <footer class="container-footer">
         <div class="row">
-            <div class="column-4">
+            <div class="columne-4">
                 <ul>
                     <li><a href="ueber_mich.html"> Über Mich </a></li> 
                     <li><a href="kontakt.html"> Kontakt </a></li>
@@ -58,12 +68,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="column-4">
+            <div class="columne-4">
                 <a href="mailto:saskia.naomi.schellhammer@hs-furtwangen.de" target="_blank">
-                    <img src="mailto_icon.png" alt="Mail Logo" class="icon" />
+                    <img src="mailto_icon.png" alt="Mail Logo" class="icon-bottom" />
                 </a>
                 <a href="https://www.instagram.com/_abelaviagem/" target="_blank">
-                    <img src="instagram_icon.png" alt="Instagram Logo" class="icon" />
+                    <img src="instagram_icon.png" alt="Instagram Logo" class="icon-bottom" />
                 </a>
             </div>
         </div>
