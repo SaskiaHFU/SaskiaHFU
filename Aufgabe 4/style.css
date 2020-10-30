@@ -176,7 +176,7 @@ ul, ol, p {
 
 ul > li {
     list-style: none;
-    font-size: 1.125rem;
+    font-size: 1.0rem;
     line-height: 2.5rem;
     text-transform: uppercase;
     margin: auto;
@@ -189,6 +189,7 @@ ul > li {
     color: #42413f;
     padding: 0;
     margin: 0
+    
 }
 
 .input-form{
@@ -276,6 +277,14 @@ video {
     border: none;
 }
 
+iframe {
+    display: inline;
+    height: 250px;
+    width: 400px;
+    border: none;
+}
+
+
 .icon-top {
     width: 20%;
     height: auto;
@@ -290,58 +299,41 @@ video {
     margin: 0;
     display: inline;
 }
+
 blockquote + h3 {
     padding-top: 2em;
    
 }
 
-@media screen and (min-width:320px){
-    h1{
-       
-        font-size: 0.8rem; 
-    }
-
-    nav {
-        
-        font-size: 0.8rem;
-       
-    }
-
-    .container-footer > li {
-        font-size: 0.8rem;
+@media screen and (max-width:320px){
+    
+    
+    h1 {
+        font-size: 0.8;
     }
 
 }
-@media screen and (min-width:768px){
-    h1{
-        font-size: 1.0rem;
-        
-    }
-    nav {
-        
-        font-size: 1.0rem;
-       
-    }
 
-    .container-footer > li {
+@media screen and (max-width:768px){
+    
+    
+    h1 {
         font-size: 1.0rem;
     }
 
 }
+
 @media screen and (max-width:1200px){
-    h1{
-        font-size: 1.2rem;
-        
-    }
-    nav {
-        
-        font-size: 1.2rem;
-       
-    }
 
-    .container-footer > li {
-        font-size: 1.22rem;
+    
+    h1 {
+        font-size: 1.2rem;
     }
 
 }
+
+
+
+
+
 
