@@ -12,28 +12,66 @@
 
     <!--Navigation-->
     <nav class="header-nav">
-        <a href="index.html">
-            <img src="logo2.jpg" alt="Logo" />
-        </a>
-        <ul>
-            <li><a href="index.html">Startseite</a><i>|</i></li>
-            <li class="active"><a href="ueber_mich.html">Über Mich</a><i>|</i></li>
-            <li><a href="kontakt.html">Kontakt</a><i>|</i></li>
-        </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                   
+                <a href="index.html">
+                    <img src="logo2.jpg" alt="Logo" />
+                </a>
+                <ul>
+                    <li ><a href="index.html">Startseite</a><i>|</i></li>
+                    <li class="visited"><a href="ueber_mich.html">Über Mich</a><i>|</i></li>
+                    <li><a href="kontakt.html">Kontakt</a><i>|</i></li>
+                </ul> 
+                </div>
+            </div>
+        </div>    
     </nav>
-    <div class="container-main">
+
+    <div class="container">
+        
         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-1"></div>
-            <div class="col-1"></div>
-            <div class="col-1"></div>
+            <div class="col-4" id="image-bereich">
+                <h1>Das bin Ich</h1>
+                <img src="DSC09109.JPG" alt="Das bin ich in Australien" />
+                <p> Ich bin 26 Jahre alt. Zuerst habe ich eine Ausbildung zur Erzieherin gemacht und dann das Abitur
+                    nachgeholt.</p>
+                <p>Danach habe ich 1 1/2 Jahre in Australien gelebt und gearbeitet. </p>
+                <p>Ich liebe es zu reisen!</p>
+            </div>
+
+            <div class="col-4" id="video-bereich">
+                <p>Außerdem ist es mein <b class="traum">Traum</b> einmal ein Apartment in Sydney zu besitzen.</p>
+                <p><u>Und zwar ein Apartment in genau dem Gebäude, in welchem ich schon einmal gewohnt habe.</u></p>
+
+                <video src="Sydney.MOV" controls class="video"></video>
+
+                <p>Das Gebäude ist in der <q>Liverpool Street</q></p>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15758.657948529162!2d151.21125947090084!3d-33.867763003196856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae177016fe57%3A0x6790ae6b01272d39!2sLiverpool%20St%2C%20Sydney%20NSW%2C%20Australien!5e0!3m2!1sde!2sde!4v1604055953860!5m2!1sde!2sde"
+                    style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-2"></div>
+    </div>
+
+    <div class="row" id="footer">
+        <div class="col-2">
+            <ul>
+                <li><a href="ueber_mich.html"> Über Mich </a></li>
+                <li><a href="kontakt.html"> Kontakt </a></li>
+                <li><a href="index.html"> Startseite </a></li>
+            </ul>
+
         </div>
-        <div class="row">
-            <div class="col-4"></div>
+        <div class="col-2">
+            <a href="mailto:saskia.naomi.schellhammer@hs-furtwangen.de" target="_blank">
+                <img src="mailto_icon.png" alt="Mail Logo" class="icon-bottom" />
+            </a>
+            <a href="https://www.instagram.com/_abelaviagem/" target="_blank">
+                <img src="instagram_icon.png" alt="Instagram Logo" class="icon-bottom" />
+            </a>
+
         </div>
     </div>
 </body>

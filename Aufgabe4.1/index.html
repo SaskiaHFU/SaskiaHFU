@@ -11,30 +11,136 @@
 <body>
 
     <!--Navigation-->
+
     <nav class="header-nav">
-        <a href="index.html">
-            <img src="logo2.jpg" alt="Logo" />
-        </a>
-        <ul>
-            <li class="active"><a href="index.html">Startseite</a><i>|</i></li>
-            <li><a href="ueber_mich.html">Über Mich</a><i>|</i></li>
-            <li><a href="kontakt.html">Kontakt</a><i>|</i></li>
-        </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                   
+                <a href="index.html">
+                    <img src="logo2.jpg" alt="Logo" />
+                </a>
+                <ul>
+                    <li class="visited"><a href="index.html">Startseite</a><i>|</i></li>
+                    <li><a href="ueber_mich.html">Über Mich</a><i>|</i></li>
+                    <li><a href="kontakt.html">Kontakt</a><i>|</i></li>
+                </ul> 
+                </div>
+            </div>
+        </div>    
     </nav>
 
-    <div class="container-main">
+    <div class="container" id="like-bereich">
+        <h1>Hier erzähle ich dir ein bisschen über Mich</h1>
         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-1"></div>
-            <div class="col-1"></div>
-            <div class="col-1"></div>
+            <div class="col-1">
+            <article>
+                <h3><b>Dinge die ich mag:</b></h3>
+                <ol>
+                    <li>Interior Design</li>
+                    <li>Reisen</li>
+                    <li>Kultur</li>
+                    <li>Fair Fashion</li>
+                </ol>
+            </article>
+            </div>
+            <div class="col-1">
+            <article>
+                <h3>Das sind meine liebsten Webseiten: </h3>
+                <ol>
+                    <li><a href="https://theculturetrip.com/" target="_blank">Culture Trip</a></li>
+                    <li><a href="https://www.architecturaldigest.com/" target="_blank">Architectural Digest</a></li>
+                    <li><a href="https://www.sightunseen.com/" target="_blank">Sight Unseen</a></li>
+                </ol>
+            </article>
+            </div>
+            <div class="col-1">
+                <article>
+                 <h3>Das sind die Besten Bücher: </h3>
+                    <ol>
+                        <li><q>We Should All Be Feminists</q> - Chimamanda Ngozi Adichie</li> 
+                        <li><q>Factfulness</q> - Hans Rosling </li>
+                        <li><q>Leila</q> - Alexandra Cavelius</li>
+                    </ol>
+                </article>
+            </div>
+            <div class="col-1">
+                <h3>Diese Orte mag ich am meisten:</h3>
+                <ul>
+                    <li>Sydney</li>
+                    <li>Sarajevo</li>
+                    <li>Barcelona</li>
+                    <li>Budapest</li>
+                </ul>
+            </div>
         </div>
         <div class="row">
-            <div class="col-2"></div>
-            <div class="col-2"></div>
+            <h2>Außerdem fotografiere ich gerne</h2>
+            <div class="col-2" id="image-bereich">
+                <h3>Das sind Colmar und Meersburg</h3>
+                    <section class="image-slide">
+                        <img src="Colmar.JPG" alt="Das ist Colmar" />
+                        <img src="Meersburg.JPG" alt="Das ist Meersburg" />
+                    </section>
+            </div>
+            <div class="col-2" id="image-bereich">
+                <h3>Das sind Konstanz und Gordons Bay</h3>
+                <section class="image-slide">
+                    <img src="Konstanz.JPG" alt="Das ist Konstanz" />
+                    <img src="Gordons_Bay.JPG" alt="Das ist Gordons Bay" />
+                </section>
+            </div>
         </div>
         <div class="row">
-            <div class="col-4"></div>
+            <div class="col-4" id="video-bereich">
+                <h4><i>Das ist eine der schönsten Inseln in Australien, sie heißt Hamilton Island und liegt in
+                    Queensland.</i></h4>
+            <p><video src="Hamilton_Island_Video.mp4" controls class="video"></video></p>
+            <p><audio src="Hamilton_Island_Audio.ogg" controls></audio></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <section id="poem">
+                    <h2>Hier ist ein Ausschnitt eines Poems von Sunday Lane: </h2>
+
+                    <p>Hold on Darling. Hold onto the fire inside of you.</p>
+                    <p>Hold onto falling in love, to serendipity and fate,</p>
+                    <p>and all the magic this world is offering you.</p>
+                    <p>Hold on to the way the light escapes through the trees </p>
+                    <p>and the smell of the air in the spring.</p>
+                    <p>To the touch of the wind.</p>
+                    <p>Hold in to the colour of the sky in the morning,</p>
+                    <p>before man wakes to spoil it. There is so much unexplored,</p>
+                    <p>so much still for you to know. There is so much life for you to live.</p>
+                    <p>For you to feel.</p>
+                    <p>You have so much time left for dreaming, for laughing too much </p>
+                    <p>and loving too hard. You still have so much to fight for.</p>
+                    <p>To hold onto. </p>
+                    <p>Wrap your hands around life and hold on.</p>
+                    <p>Hold on darling. [...]</p>
+                    <p><i><b>- Words by Sunday Lane</b></i></p>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="footer">
+        <div class="col-2">
+            <ul>
+                <li><a href="ueber_mich.html"> Über Mich </a></li>
+                <li><a href="kontakt.html"> Kontakt </a></li>
+                <li><a href="index.html"> Startseite </a></li>
+            </ul>
+
+        </div>
+        <div class="col-2">
+            <a href="mailto:saskia.naomi.schellhammer@hs-furtwangen.de" target="_blank">
+                <img src="mailto_icon.png" alt="Mail Logo" class="icon-bottom" />
+            </a>
+            <a href="https://www.instagram.com/_abelaviagem/" target="_blank">
+                <img src="instagram_icon.png" alt="Instagram Logo" class="icon-bottom" />
+            </a>
+
         </div>
     </div>
 </body>
