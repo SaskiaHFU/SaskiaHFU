@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    background-color: #F8F8F7;
+    background-image: url("bg.png");
+    font-family: "Century Gothic", serif;
+    line-height: 1.5;
+    color: #797979;
+    letter-spacing: 0.01em;
+    font-size: 16px;
+
+}
+/*---Navigation---*/
+
+.header-nav {
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    border-bottom: 2px solid #797979;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.header-nav > a > img {
+    height: 30px;
+    width: auto;
+    position: absolute;
+    left: 2rem;
+    top: 0.55rem;
+    
+}
+
+.active {
+    color: #BEABA7;
+}
+
+.header-nav > ul {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0.8rem;
+    right: 2rem;
+    height: 100%;
+}
+
+.header-nav > ul > li {
+    display: inline-block;
+    height: 100%;
+    
+}
+
+.header-nav > ul > li > a:link {
+
+    text-decoration: none;
+    color: #797979;
+}
+.header-nav > ul > li > a:hover {
+
+    color: rosybrown;
+    text-decoration: underline;
+}
+.header-nav > ul > li > a:active {
+
+    color: palevioletred;
+    text-decoration: none;
+}
+.header-nav > ul > li > a:visited {
+
+    text-decoration: none;
+    
+}
+
+/*--- GRID-SYSTEM ---*/
+
+.container-main {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.row::after {
+content: "";
+clear: both;
+display: block;
+}
+
+[class*='col-'] {
+    float: left;
+    min-height: 1px;
+    
+
+}
+
+.col-1 {
+    width: 25%;
+    display: inline;
+    background-color: #A97E78;
+    
+}
+
+.col-2 {
+    width: 50%;
+    display: inline;
+    background-color: #BEABA7;
+}
+
+.col-4 {
+    width: 100%;
+    display: inline;
+    background-color: #bebee4;
+    
+}

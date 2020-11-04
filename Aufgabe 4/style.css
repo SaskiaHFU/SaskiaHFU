@@ -1,4 +1,6 @@
-
+html, body {
+    width: 100%;
+}
 
 h1 {
     color: #A97E78;
@@ -83,8 +85,7 @@ nav {
 }
 
 .row {
-    flex-flow: row wrap;
-    display: inline-block;
+    display: inline;
     margin: 0;
 }
 
@@ -96,20 +97,20 @@ nav {
 .columne-1 {
     width: 25%;
     display: inline;
-    height: 200px;
+    background-color: #A97E78;
     
 }
 
 .columne-2 {
     width: 50%;
     display: inline;
-    height: 200px;
+    background-color: #BEABA7;
 }
 
 .columne-4 {
     width: 100%;
     display: inline;
-    height: 200px;
+    background-color: #bebee4;
     
 }
 
@@ -351,9 +352,10 @@ blockquote + h3 {
     nav  {
         width: 15%;
         display: inline;  
+        font-size: 0.8rem;
     }
     .icon-top {
-        display: inline;
+        text-align: left;
     }
     
 }
