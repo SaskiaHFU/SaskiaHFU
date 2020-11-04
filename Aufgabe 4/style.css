@@ -47,6 +47,7 @@ nav {
     display: inline;
     position: fixed;
     font-size: 1.2rem;
+    
 }
 
 #site-header > a > img {
@@ -299,31 +300,32 @@ blockquote + h3 {
     width: 100%;
   }
 
+#nav-media {
+    
+}
+
+  @media only screen 
+  and (max-device-width: 320px)
+  {
+    .columne-1 {
+        width: 50%;
+    } 
+
+    nav > li {
+        width: 50%;
+        float: none;
+    }
+    
+}
+
   @media only screen 
   and (min-device-width: 320px) 
-  and (max-device-width: 568px)
-  
-
-{
-    
-    body {
-        color: #90545d;
-    }
-
+  and (max-device-width: 767px)
+  {
     .columne-1 {
-        width: 25%;
-        
-    }
-    
-    .columne-2 {
         width: 50%;
-        
-    }
+    } 
     
-    .columne-4 {
-        width: 100%;
-        
-    }
 }
 
 @media only screen 
@@ -331,52 +333,21 @@ blockquote + h3 {
   and (max-device-width: 1024px) 
    {
     
-    body {
-        color: #7E5252;
-    }
-
-    h1 {
-        font-size: 80%;
-    }
-
     .columne-1 {
-        width: 25%;
-        
-    }
-    
-    .columne-2 {
         width: 50%;
+    }
 
-    }
     
-    .columne-4 {
-        width: 100%;
-    }
 }
 @media screen 
-  and (min-device-width: 1200px) 
+  and (min-device-width: 1024px) 
   and (max-device-width: 1600px) 
     {
 
-    
-    body {
-        color: #797979;
-    }
-
     .columne-1 {
         width: 25%;
-        
     }
     
-    .columne-2 {
-        width: 50%;
-        
-    }
-    
-    .columne-4 {
-        width: 100%;
-        
-    }
 }
 
 

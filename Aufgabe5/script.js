@@ -1,18 +1,16 @@
-function a1(): void {
-    let x: string = "Alles";
+"use strict";
+function a1() {
+    let x = "Alles";
     debugger;
     console.log(x);
     func1();
     console.log("Logo!");
 }
-
 a1();
-
-function func1(): void {
+function func1() {
     console.log("Klar?");
 }
-
-function func2(): void {
+function func2() {
     console.log("Alles Gute!");
 }
-
+//# sourceMappingURL=script.js.map
