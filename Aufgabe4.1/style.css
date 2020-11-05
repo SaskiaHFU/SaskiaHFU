@@ -171,6 +171,10 @@ h3 {
     display: none;
 }
 
+.desktop-nav {
+    position: sticky;
+}
+
 
 
 /*---LINKS---*/
@@ -289,28 +293,28 @@ audio {
 }
 /*---BODY-KONTAKT---*/
 
-    #kontakt-bereich {
+#kontakt-bereich {
         display: block;
         margin-left: auto;
         margin-right: auto;
         background-color: #F8F8F7;
         text-align: center;
         margin-top: 5rem;
-    }
-    .mail {
+ }
+.mail {
         color: #bebee4;
-    }
+}
 
-    #message-form {
+#message-form {
         background: #fff;
         color: #42413f;
         padding: 0;
         margin: 0
         
-        
-    }
+    
+}
 
-    .input-form{
+.input-form{
         background-color: white;
         box-sizing: border-box;
         border: none;
@@ -321,16 +325,16 @@ audio {
         display: block;
         padding: 8px 20px;
         margin: 0 0 9px;
-    }
+}
 
-    #contact {
+#contact {
 
         font-size: 1.25rem;
         letter-spacing: 1px;
         line-height: 1.25;
-    }
+}
 
-    button {
+button {
         background-color: #42413f;
         border: 0 none;
         color: #fff;
@@ -341,12 +345,12 @@ audio {
         margin-bottom: 2em;
         width: 100%;
         font-family: inherit;
-    }
+}
 
-    blockquote + h3 {
+blockquote + h3 {
         padding-top: 2em;
        
-    }
+}
 
 /*---Allgemein---*/
 
@@ -381,9 +385,13 @@ ul > li {
     
 }
 
-ul, ol, p {
+ul, ol {
     padding: 0;
     margin-top: 0;
+}
+
+p {
+    padding: 2px;
 }
 
 .visited {
@@ -502,10 +510,12 @@ iframe {
 
     .col-1 {
         width: 100%;
+        height: auto;
     }
 
     .col-2 {
         width: 100%;
+        height: auto;
     }
 
     #video-bereich video {
@@ -571,10 +581,12 @@ iframe {
 
     .col-1 {
         width: 100%;
+        height: auto;
     }
 
     .col-2 {
         width: 100%;
+        height: auto;
     }
 
     #video-bereich video {
