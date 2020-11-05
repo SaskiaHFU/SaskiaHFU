@@ -367,6 +367,7 @@ blockquote + h3 {
 
 ol,ul {
     list-style: none;
+    text-align: center;
 }
 p + i {
     text-transform: uppercase;
