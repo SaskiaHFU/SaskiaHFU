@@ -60,8 +60,8 @@ h2 {
 h3 {
     color: #D8C4B2;
     text-align: center; 
-    padding-top: 10%;
-    padding: 0;
+    padding-top: 2px;
+    
 }
 /*---Navigation---*/
 
@@ -102,6 +102,10 @@ h3 {
     
 }
 
+.visited {
+    color: #BEABA7;
+}
+
  a:link {
 
     text-decoration: none;
@@ -111,7 +115,7 @@ h3 {
  a:visited {
 
     text-decoration: none;
-    color: #797979;
+    
     
 }
 
@@ -164,12 +168,13 @@ display: block;
 
 .col-1 {
     width: 25%;
-    height: 200px;
+    height: 250px;
 }
 
 
 .col-2 {
     width: 50%;
+    
 
 }
 
@@ -214,6 +219,7 @@ audio {
 #poem {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20%;
     display: block;
     border-color: #75464A;
     border-style: solid;
@@ -343,11 +349,15 @@ iframe {
     border: none;
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: 30%;
+    margin-bottom: 20%;
+    margin-top: 20%;
 }
 
 /*---BODY-FOOTER---*/
 
+#footer li {
+    padding-left: 10%;
+}
 #footer {
     width: 100%;
     height: auto;
@@ -422,6 +432,67 @@ iframe {
 }
 
 @media (max-width: 420px) {
+
+    .col-1 {
+        width: 100%;
+    }
+
+    .col-2 {
+        width: 100%;
+    }
+
+    #video-bereich video {
+        width: 90%;
+    }
+    #image-bereich image {
+        width: 90%;
+    }
+    .icon-bottom {
+        width: 15%;
+    }
+    #footer  li {
+        font-size: 90%;
+    }
+
+    nav {
+        display: block;
+    }
+
+    h1 {
+        font-size: 90%;
+    }
+
+    h2 {
+        font-size: 90%;
+    }
+
+    h3 {
+        font-size: 90%;
+    }
+
+    body {
+        font-size: 90%;
+    }
+}
+
+@media (max-width: 320px) {
+
+    h1 {
+        font-size: 90%;
+    }
+
+    h2 {
+        font-size: 90%;
+    }
+
+    h3 {
+        font-size: 90%;
+    }
+
+    body {
+        font-size: 90%;
+    }
+
 
     .col-1 {
         width: 100%;
