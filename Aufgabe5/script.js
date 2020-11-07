@@ -44,63 +44,53 @@ function func2() {
 function func3() {
     x = "Test";
 }
-/* Aufgabe 4 */
-/*function multiply(_zahl1: number, _zahl2: number): number {
-
-    let ergebnis: number = (_zahl1 * _zahl2);
+/* Aufgabe 5 */
+function multiply(_zahl1, _zahl2) {
+    let ergebnis = (_zahl1 * _zahl2);
     return ergebnis;
 }
-
-multiply();*/
-/*function max (_zahl1: number, _zahl2: number): number {
-
+console.log(multiply(2, 4));
+function max(_zahl1, _zahl2) {
     if (_zahl1 > _zahl2) {
         console.log(_zahl1);
         return _zahl1;
-    } else {
+    }
+    else {
         console.log(_zahl2);
         return _zahl2;
     }
-    
 }
-
-max();*/
-/*function count (): void {
-    let i: number = 1;
-    
+max(9, 6);
+function count() {
+    let i = 1;
     do {
         console.log(i);
         i = i + 1;
-    } while ( i <= 100);
-
+    } while (i <= 100);
     console.log(i);
 }
-
-count();*/
-/*function factorial (_n: number): number {
-
-    for (let n: number = 0; n < 500; n++){
-        if (n < 1){
-            let x: number = 1;
-            console.log(x);
-        } else {
-            console.log(n * n);
-            return (n * n);
-        }
+console.log(count());
+let n = 4;
+function factorial(_n) {
+    let factorial = 1;
+    if (_n < 1) {
+        return 1;
     }
+    for (let n = 1; n <= _n; n++) {
+        factorial = n * factorial;
+    }
+    return factorial;
 }
-
-factorial();*/
+console.log(factorial(n));
 function leapyears() {
     for (let i = 1900; i < 2020; i++) {
-        let x = (i / 4);
-        if (x == true && i / 100) {
-            console.log(i);
-        }
-        else
-            (i / 100 == true);
-        {
+        if (i == 1904 || i == 1908 || i == 1912 || i == 1916 || i == 1920 || i == 1924 || i == 1928 || i == 1932 || i == 1936 || i == 1940 ||
+            i == 1944 || i == 1948 || i == 1952 || i == 1956 || i == 1960 || i == 1964 || i == 1968 || i == 1972 || i == 1976 || i == 1980 ||
+            i == 1984 || i == 1988 || i == 1992 || i == 1996 || i == 2000 || i == 2004 || i == 2008 || i == 2012 || i == 2016 || i == 2020) {
+            return i;
         }
     }
+    return null;
 }
+console.log(leapyears);
 //# sourceMappingURL=script.js.map

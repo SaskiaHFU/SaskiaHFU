@@ -6,16 +6,16 @@ function a1(): void {
     func11();
     console.log(x);
     console.log("Logo!");
-    
+
 }
 
 a1();
 
-function func11 (): void {
+function func11(): void {
     console.log("Klar?");
 }
 
-function func22 (): void {
+function func22(): void {
     console.log("Alles Gute!");
 }
 
@@ -27,7 +27,7 @@ function a2(): void {
     do {
         console.log(i);
         i = i - 1;
-    } while ( i > 0);
+    } while (i > 0);
 }
 
 a2();
@@ -56,17 +56,21 @@ function func3(): void {
     x = "Test";
 }
 
-/* Aufgabe 4 */
+/* Aufgabe 5 */
 
-/*function multiply(_zahl1: number, _zahl2: number): number {
+
+
+function multiply(_zahl1: number, _zahl2: number): number {
 
     let ergebnis: number = (_zahl1 * _zahl2);
     return ergebnis;
+
 }
 
-multiply();*/
+console.log(multiply(2, 4));
 
-/*function max (_zahl1: number, _zahl2: number): number {
+
+function max (_zahl1: number, _zahl2: number): number {
 
     if (_zahl1 > _zahl2) {
         console.log(_zahl1);
@@ -78,9 +82,9 @@ multiply();*/
     
 }
 
-max();*/
+max(9, 6);
 
-/*function count (): void {
+function count (): void {
     let i: number = 1;
     
     do {
@@ -91,39 +95,62 @@ max();*/
     console.log(i);
 }
 
-count();*/
+console.log(count());
 
-/*function factorial (_n: number): number {
+let n: number = 4;
 
-    for (let n: number = 0; n < 500; n++){
-        if (n < 1){
-            let x: number = 1;
-            console.log(x);
-        } else {
-            console.log(n * n);
-            return (n * n);
-        }
-    }
-}
+function factorial(_n: number): number {
 
-factorial();*/
-
-function leapyears (): number {
-
-    for (let i: number = 1900; i < 2020; i++) {
-
-        let x: boolean = (i / 4);
-
-        if (x == true && i/100){
-
-            console.log (i);
-
-        } else (i/100 == true) {
-
-        }
-    }
+    let factorial: number = 1;
     
+    if (_n < 1) {
+        return 1;
+    } 
+    for (let n: number = 1; n <= _n; n++) {
+        
+        factorial = n * factorial;
+
+    }
+    return factorial;
 }
+
+console.log(factorial(n));
+
+// function leapyears (): number {
+
+//     for (let i: number = 1900; i < 2020; i++) {
+
+        
+//         if ( i == 1904 || i == 1908 || i == 1912 || i == 1916 || i == 1920 || i == 1924 || i == 1928 || i == 1932 || i == 1936 || i == 1940 ||
+//             i == 1944 || i == 1948 || i == 1952 || i == 1956 || i == 1960 || i == 1964 || i == 1968 || i == 1972 || i == 1976 || i == 1980 ||
+//             i == 1984 || i == 1988 || i == 1992 || i == 1996 || i == 2000 || i == 2004 || i == 2008 || i == 2012 || i == 2016 || i == 2020) {
+
+//                 return i;
+
+//         }  
+
+        
+//     } 
+    
+//     return null;
+
+// }
+
+// console.log(leapyears);
+
+// Aufgabe 6
+
+function rows (): void {
+    for (let i: number = 1; i < 7; i++) {
+            console.log();
+
+            for (let i: number = 1; i < 7; i++) {
+
+                console.log("#");
+        }
+        
+
+    }
 
 
 
