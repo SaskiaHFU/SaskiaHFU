@@ -54,7 +54,8 @@ console.log(showInfo(s2));
 let canvas: HtmlCanvasElement = <HtmlCanvasElement> document.getElementById("myCanvas");
 let context: CanvasRenderingContext2D = canvas.getContext("2d");
 
-context.fillRect(100, 100, 100, 100);
+context.fillStyle = "black";
+context.fillRect(50, 50, 50, 50);
 
 console.log(canvas);
 

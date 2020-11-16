@@ -26,11 +26,9 @@ console.log(showInfo(s2));
 console.log(showInfo(s2));
 //Aufgabe 2
 //Aufgabe 3
-
 let canvas = document.getElementById("myCanvas");
-
-let context = canvas.getContext('2d');
-context.moveTo(0, 0);
-context.lineTo(200, 100);
-context.stroke();
+let context = canvas.getContext("2d");
+context.fillStyle = "black";
+context.fillRect(50, 50, 50, 50);
+console.log(canvas);
 //# sourceMappingURL=script.js.map
