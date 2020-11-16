@@ -18,8 +18,19 @@ let s3 = { name: "Paul", matrikelnummer: 265243, studiengang: "Online Medien" };
 let s4 = null;
 let studierende = [s1, s2, s3, s4];
 console.log(studierende);
-console.log(_student);
+function showInfo(_student) {
+    console.log(_student);
+}
 console.log(showInfo(s1));
 console.log(showInfo(s2));
 console.log(showInfo(s2));
+//Aufgabe 2
+//Aufgabe 3
+
+let canvas = document.getElementById("myCanvas");
+
+let context = canvas.getContext('2d');
+context.moveTo(0, 0);
+context.lineTo(200, 100);
+context.stroke();
 //# sourceMappingURL=script.js.map
