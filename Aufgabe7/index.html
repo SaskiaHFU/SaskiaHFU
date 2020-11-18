@@ -3,16 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Startseite</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
-    
-    <button id="button1">Quadrat</button>
-    <button id="button2">Löschen</button>
+    <!--Navigation-->
 
-    <div id="fuellen">
+    <nav class="header-nav">
+
+        <div class="container desktop-nav">
+            <div class="row">
+                <div class="col-4">
+                   
+                <a href="index.html">
+                    <img src="logo2.jpg" alt="Logo" />
+                </a>
+                <ul>
+                    <li ><a href="warenkorb.html" class="visited">Warenkorb</a><i>|</i></li>
+                    <li><a href="mein_account.html" >Account</a><i>|</i></li>
+                </ul> 
+                </div>
+            </div>
+        </div>    
+    
+
+<!---DROPDOWN-MENU-->
+    <div class="container mobile-nav">
+        <div class="row">
+            <div class="col-4">
+               
+                <a href="index.html">
+                    <img src="logo2.jpg" alt="Logo" />
+                </a>
+                <div class="mobile-nav-dropdown clearfix">
+
+                    <div class="mobile-nav-button">
+                        <span> &equiv; </span>
+                    </div>
+
+                    <div class="mobile-nav-content clearfix">
+                        <ul>
+                            <li ><a href="warenkorb.html" class="visited">Warenkorb</a><i>|</i></li>
+                            <li><a href="mein_account.html" >Account</a><i>|</i></li>
+                            
+                        </ul>  
+                    </div>  
+                </div>
+
+
+            </div>
+        </div>
+    </div>    
+</nav>   
+
+<!--Main-->
+
+    <div class="container" id="like-bereich">
+        <h2>Stelle dir deinen eigenen Obstsalat zusammen</h2>
+    
+            <div class="row">
+    
+                <div class="col-1">
+                    <div> S </div>
+                </div>
+                    
+                <div class="col-1">
+                    <div> M </div>
+                </div>
+    
+                <div class="col-1">
+                    <div> L </div>
+                </div>
+    
+                <div class="col-1">
+                    <div> XL </div>
+                </div>
+    
+                <p>* Der Preis variiert je nach Zutaten </p>
+    
+            </div>
+
+            <div class="container" id="like-bereich">
+                <h2>Wähle die Früchte aus, die du in deinem Obstsalat haben möchtest</h2>
         
-    </div>
+                <div class="row">
+        
+                    <div class="col-1">
+                        <div> Erdbeere </div>
+                    </div>
+                        
+                    <div class="col-1">
+                        <div> Kirsche </div>
+                    </div>
+        
+                    <div class="col-1">
+                        <div> Banane </div>
+                    </div>
+        
+                    <div class="col-1">
+                        <div> Apfel </div>
+                    </div>
+        
+            </div>
+            <div class="container" id="like-bereich">
+            
+                <div class="row">
+            
+                    <div class="col-1">
+                        <div> Birne </div>
+                    </div>
+                            
+                    <div class="col-1">
+                        <div> Trauben </div>
+                    </div>
+            
+                    <div class="col-1">
+                        <div> Orange </div>
+                    </div>
+            
+                    <div class="col-1">
+                        <div> Himbeeren </div>
+                    </div>
+            </div>
+            <div class="container" id="like-bereich">
+            
+                <div class="row">
+            
+                    <div class="col-2">
+                        <div> Saft </div>
+                    </div>
+                            
+                    <div class="col-2">
+                        <div> Müsli </div>
+                    </div>
+            
+            </div>
 </body>
 </html>
