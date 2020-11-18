@@ -1,24 +1,31 @@
 //aufgabe 1
 // Divs
 
-let div1: HTMLDivElement = <HTMLDivElement> document.createElement("DIV");               
-div1.appendChild(document.createTextNode("Das ist ein div1"));               
-document.body.appendChild(div1);    
+let div1: HTMLDivElement = <HTMLDivElement>document.createElement("DIV");
+div1.appendChild(document.createTextNode("Das ist ein div1"));
+document.body.appendChild(div1);
 
 function changeText(_event: Event): void {
 
     div1.innerText = "Text geändert";
+    div1.style.color = "pink";
+    div1.style.height = "150px";
+
 }
 
 div1.addEventListener("click", changeText);
 
-let div2: HTMLDivElement = <HTMLDivElement> document.createElement("DIV");               
-div2.appendChild(document.createTextNode("Das ist ein div2"));                
-document.body.appendChild(div2); 
+let div2: HTMLDivElement = <HTMLDivElement>document.createElement("DIV");
+div2.appendChild(document.createTextNode("Das ist ein div2"));
+document.body.appendChild(div2);
 
 function changeColor(_event: Event): void {
 
-    div2.innerText.style.color = "pink";
+    div2.style.color = "blue";
+    div2.style.width = "100px";
+    div2.style.height = "100px";
+    div2.style.border = "2px";
+    div2.style.borderColor = "blue";
 
 }
 
@@ -26,27 +33,59 @@ div2.addEventListener("click", changeColor);
 
 //Buttons
 
-let button1: HTMLDivElement = <HTMLDivElement> document.createElement("BUTTON");               
-button1.appendChild(document.createTextNode("Ich füge ein Quadrat hinzu"));             
-document.body.appendChild(button1);  
+let button1: HTMLButtonElement = <HTMLButtonElement>document.getElementById("button1");
+let button2: HTMLButtonElement = <HTMLButtonElement>document.getElementById("button2");
 
-let button2: HTMLDivElement = <HTMLDivElement> document.createElement("BUTTON");               
-button2.appendChild(document.createTextNode("Ich lösche Alles"));             
-document.body.appendChild(button2);  
 
-let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("canvas-button");
-let context: CanvasRenderingContext2D = canvas.getContext("2d");
+button1.addEventListener("click", addSquare);
+button2.addEventListener("click", loeschen);
 
 function addSquare(_event: Event): void {
-    
-    
-    context.fillStyle = "black";
-    context.fillRect(100, 100, 100, 100);
-    
-    console.log(canvas);
+
+    let div: HTMLDivElement = document.createElement("div");
+    div.style.backgroundColor = "black";
+    div.style.height = "100px";
+    div.style.width = "100px";
+    div.style.marginLeft = (Math.random() * 200).toString() + "px";
+    document.getElementById("fuellen")?.appendChild(div);
+}
+function loeschen(_event: Event): void {
+
+    let parent: HTMLDivElement = <HTMLDivElement>document.getElementById("fuellen");
+    parent.innerHTML = "";
 }
 
-let button: HTMLButtonElement = <HTMLButtonElement> (document.querySelector("button"));
-button.addEventListener("click", addSquare);
+//Aufgabe 2
+class obstsalat {
+
+    obstsorten: obst;
+    toppings: toppings;
+
+    constructor (_obstsorten: obst, _toppings: toppings){
+        this.obstsorten = _obstsorten;
+        this.toppings = _toppings;
+    }
+    
+}
+
+interface obst {
+    
+    name: string;
+    anzahl: number;
+    preis: number;
+}
+
+interface toppings {
+
+    saft: boolean;
+    streusel: boolean;
+
+}
+
+interface groeße {
+
+    groeße: number; // größe angeben um maximale anzahl festzulegen
+}
+
 
 
