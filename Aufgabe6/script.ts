@@ -51,13 +51,13 @@ console.log(showInfo(s2));
 
 //Aufgabe 3
 
-let canvas: HtmlCanvasElement = <HtmlCanvasElement> document.getElementById("myCanvas");
-let context: CanvasRenderingContext2D = canvas.getContext("2d");
+//let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("myCanvas");
+//let context: CanvasRenderingContext2D = canvas.getContext("2d");
+// '
+// context.fillStyle = "black";
+// context.fillRect(50, 50, 50, 50);
 
-context.fillStyle = "black";
-context.fillRect(50, 50, 50, 50);
-
-console.log(canvas);
+// console.log(canvas);'
 
 
 
