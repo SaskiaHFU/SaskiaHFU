@@ -50,11 +50,11 @@ h2 {
     text-align: center; 
     font-weight: lighter;
     font-size: 1.2em;
-    text-decoration: underline;
+    
 }
 
 h3 {
-    color: #CCA387;
+    color: #6E6E6E;
     text-align: center; 
     padding-top: 2px;
     font-weight: lighter;
@@ -314,7 +314,7 @@ button {
         background: #fff;
         color: #42413f;
         padding: 0;
-        margin: 0
+        margin-bottom: 30px;
         
     
 }
@@ -330,6 +330,7 @@ button {
         display: block;
         padding: 8px 20px;
         margin: 0 0 9px;
+        text-align: center;
 }
 
 
