@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Startseite</title>
-    <script src="script.js" defer></script>
+    
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src="script.js" defer></script>
+
 </head>
 <body>
     <!--Navigation-->
@@ -15,49 +17,13 @@
         <div class="container desktop-nav">
             <div class="row">
                 <div class="col-4">
-                   
-                <a href="index.html">
-                    <img src="logo2.jpg" alt="Logo" />
+                   <h1>Editor</h1>
+            
                 </a>
-                <ul>
-                    <li ><a href="index.html" class="visited">Startseite</a><i>|</i></li>
-                    <li ><a href="warenkorb.html">Warenkorb</a><i>|</i></li>
-                    <li><a href="mein_account.html">Account</a><i>|</i></li>
-                </ul> 
                 </div>
             </div>
         </div>    
-    
-
-<!---DROPDOWN-MENU-->
-    <div class="container mobile-nav">
-        <div class="row">
-            <div class="col-4">
-               
-                <a href="index.html">
-                    <img src="logo2.jpg" alt="Logo" />
-                </a>
-                <div class="mobile-nav-dropdown clearfix">
-
-                    <div class="mobile-nav-button">
-                        <span> &equiv; </span>
-                    </div>
-
-                    <div class="mobile-nav-content clearfix">
-                        <ul>
-                            <li ><a href="index.html" class="visited">Startseite</a><i>|</i></li>
-                            <li ><a href="warenkorb.html" class="visited">Warenkorb</a><i>|</i></li>
-                            <li><a href="mein_account.html" >Account</a><i>|</i></li>
-                            
-                        </ul>  
-                    </div>  
-                </div>
-
-
-            </div>
-        </div>
-    </div>    
-</nav>   
+       
 
 <!--Main-->
 
@@ -65,140 +31,12 @@
         <h1>Stelle dir deinen eigenen Obstsalat zusammen</h1>
     
             <div class="row">
-                <h2>Welche Größe soll dein Obstsalat haben?</h2>
-                <div class="col-1">
-                    <button class="size"> S </button>
-                    <p>Bis zu 4 Früchten</p>
+                <h2>Klicke Start um anzufangen</h2>
+                <div class="col-4">
+                    <a href="seite_eins.html"><button id="start">Start</button></a>
                 </div>
-                    
-                <div class="col-1">
-                    <button class="size"> M </button>
-                    <p>Bis zu 4 Früchten</p>
-                </div>
-    
-                <div class="col-1">
-                    <button class="size"> L </button>
-                    <p>Bis zu 4 Früchten</p>
-                </div>
-    
-                <div class="col-1">
-                    <button class="size"> XL </button>
-                    <p>Bis zu 4 Früchten</p>
-                </div>
-    
-                <p>* Der Preis variiert je nach Zutaten </p>
-    
-            </div>
-
-            <div class="container" id="order">
-                <h2>Wähle die Früchte aus, die du in deinem Obstsalat haben möchtest:</h2>
-        
-                <div class="row">
-        
-                    <div class="col-1">
-
-                        <div class="obst"> Erdbeere </div>
-                        <span class="reduce-icon"> &ominus; </span>
-                        <span class="count"> 1 </span>
-                        <span class="add-icon"> &oplus; </span>
-                        <p><button class="add">Add to Bowl</button></p>
-
-                    </div>
-                        
-                    <div class="col-1">
-                        <div class="obst"> Kirsche </div>
-                        <span class="reduce-icon"> &ominus; </span>
-                        <span class="count"> 1 </span>
-                        <span class="add-icon"> &oplus; </span>
-                        <p><button class="add">Add to Bowl</button></p>
-                    </div>
-        
-                    <div class="col-1">
-                        <div class="obst"> Banane </div>
-                        <span class="reduce-icon"> &ominus; </span>
-                        <span class="count"> 1 </span>
-                        <span class="add-icon"> &oplus; </span>
-                        <p><button class="add">Add to Bowl</button></p>
-                    </div>
-        
-                    <div class="col-1">
-                        <div class="obst"> Apfel </div>
-                        <span class="reduce-icon"> &ominus; </span>
-                        <span class="count"> 1 </span>
-                        <span class="add-icon"> &oplus; </span>
-                        <p><button class="add">Add to Bowl</button></p>
-                    </div>
-        
-            </div>
-            <div class="container" id="order">
                 
-                <div class="row">
-            
-                    <div class="col-1">
-                        <div class="obst"> Birne </div>
-                        <span class="reduce-icon"> &ominus; </span>
-                        <span class="count"> 1 </span>
-                        <span class="add-icon"> &oplus; </span>
-                        <p><button class="add">Add to Bowl</button></p>
-                    </div>
-                            
-                    <div class="col-1">
-                        <div class="obst"> Trauben </div>
-                        <span class="reduce-icon"> &ominus; </span>
-                        <span class="count"> 1 </span>
-                        <span class="add-icon"> &oplus; </span>
-                        <p><button class="add">Add to Bowl</button></p>
-                    </div>
-            
-                    <div class="col-1">
-                        <div class="obst"> Orange </div>
-                        <span class="reduce-icon"> &ominus; </span>
-                        <span class="count"> 1 </span>
-                        <span class="add-icon"> &oplus; </span>
-                        <p><button class="add">Add to Bowl</button></p>
-                    </div>
-            
-                    <div class="col-1">
-                        <div class="obst"> Himbeeren </div>
-                        <span class="reduce-icon"> &ominus; </span>
-                        <span class="count"> 1 </span>
-                        <span class="add-icon"> &oplus; </span>
-                        <p><button class="add">Add to Bowl</button></p>
-                    </div>
             </div>
-            <div class="container" id="order">
-                <h2>Möchtest du ein Topping haben, dann klicke dieses an:</h2>
-                <div class="row">
             
-                    <div class="col-2">
-                        <button id="topping-choice-juice"> Saft </button>
-                    </div>
-                            
-                    <div class="col-2">
-                        <button id="topping-choice-muesli"> Müsli </button>
-                    </div>
-            
-            </div>
-            <div class="row" id="footer">
-                <div class="col-4">
-                    <ul>
-                        <li><a href=""> Payment Methods | </a></li>
-                        <li><a href=""> Impressum | </a></li>
-                        <li><a href=""> Gift Cards | </a></li>
-                        <li><a href=""> AGB | </a></li>
-                        <li><a href=""> Kontakt  </a></li>
-                    </ul>
-        
-                </div>
-                <div class="col-4">
-                    <a href="mailto:saskia.naomi.schellhammer@hs-furtwangen.de" target="_blank">
-                        <img src="mailto_icon.png" alt="Mail Logo" class="icon-bottom" />
-                    </a>
-                    <a href="https://www.instagram.com/_abelaviagem/" target="_blank">
-                        <img src="instagram_icon.png" alt="Instagram Logo" class="icon-bottom" />
-                    </a>
-        
-                </div>
-            </div>
 </body>
 </html>

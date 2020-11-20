@@ -1,41 +1,23 @@
-class obstsalat {
+// Next Button
 
-    obstsorten: obst;
-    toppings: toppings;
+let buttonNext: HTMLButtonElement = <HTMLButtonElement> document.getElementById("next");
+buttonNext.addEventListener("click", clear);
 
-    constructor(_obstsorten: obst, _toppings: toppings) {
-        this.obstsorten = _obstsorten;
-        this.toppings = _toppings;
-    }
-
+function clear (_e: Event): void {
+    let parent: HTMLDivElement = <HTMLDivElement> document.getElementById("pictures");
+    parent.innerHTML = "";
+        
 }
 
-interface obst {
+// Canvas
 
-    name: string;
-    anzahl: number;
-    preis: number;
-}
+let canvasSchaleEins: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("canvas-schale-eins");
+let context: CanvasRenderingContext2D = canvasSchaleEins.getContext("2d");
 
-interface toppings {
+context.fillStyle = "black";
+context.fillRect(50, 50, 50, 50);
 
-    saft: boolean;
-    streusel: boolean;
+console.log(canvasSchaleEins);
 
-}
 
-interface groeße {
 
-    groeße: number; // größe angeben um maximale anzahl festzulegen
-}
-
-//b)
-interface ausgewaehlt {
-
-    div2.addEventListener("click", auswaehlen);
-
-function auswaehlen(_event: Event): void {
-
-    //
-}
-}
