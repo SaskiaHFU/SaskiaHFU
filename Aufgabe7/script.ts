@@ -22,7 +22,7 @@ let canvasSchaleEins: HTMLCanvasElement = <HTMLCanvasElement> document.getElemen
 let context: CanvasRenderingContext2D = canvasSchaleEins.getContext("2d");
 
 context.fillStyle = "black";
-context.fillRect(20, 20, 90, 120);
+context.arc(75, 75, 35, 0, Math.PI, false); 
 
 console.log(canvasSchaleEins);
 
