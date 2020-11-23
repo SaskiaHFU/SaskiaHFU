@@ -22,7 +22,7 @@ function load(_e: Event): void {
 
     for (let i = 0; i < schale.length; i++) {
         let selectElement: HTMLDivElement = <HTMLDivElement>document.getElementById("slot-1");
-        
+
         let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement("div");
         optionImage.src = schale[i].bild;
         selectElement.appendChild(optionImage);
@@ -30,36 +30,29 @@ function load(_e: Event): void {
     }
 }
 window.addEventListener("load", load);
+window.addEventListener("click", speichern);
 
-let element1: HTMLButtonElement = <HTMLButtonElement>document.getElementById("slot-1");
-element1.addEventListener("click", select);
-element1.dataset.index = "1";
+//Daten speichern
 
-let element2: HTMLButtonElement = <HTMLButtonElement>document.getElementById("slot-2");
-element2.addEventListener("click", select);
-element2.dataset.index = "2";
-
-let element3: HTMLButtonElement = <HTMLButtonElement>document.getElementById("slot-3");
-element3.addEventListener("click", select);
-element3.dataset.index = "3";
-
-let element4: HTMLButtonElement = <HTMLButtonElement>document.getElementById("slot-4");
-element4.addEventListener("click", select);
-element4.dataset.index = "4";
-
-function select (_event: MouseEvent): void {
-  let target: HTMLElement = <HTMLElement>_event.target;
-  console.log("Ausgewählt", target.dataset.index);
+function select(_event: MouseEvent): void {
+    let target: HTMLElement = <HTMLElement>_event.target;
+    console.log("Ausgewählt", target.dataset.index);
 }
 
-function speichern (): void {
+function speichern(): void {
 
     for (let i = 0; i < schale.length; i++) {
 
+        let div: HTMLDivElement = document.createElement("div");
+        div.classList.add("col-1");
+        div.addEventListener("click", select);
+        div.dataset.index = i;
+        parent.appendChild(div); //oder .prepend() wenn Sie es an den Anfang wollen
 
     }
 
 }
+
 
 
 

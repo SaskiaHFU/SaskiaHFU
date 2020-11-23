@@ -22,24 +22,19 @@ function load(_e) {
     }
 }
 window.addEventListener("load", load);
-let element1 = document.getElementById("slot-1");
-element1.addEventListener("click", select);
-element1.dataset.index = "1";
-let element2 = document.getElementById("slot-2");
-element2.addEventListener("click", select);
-element2.dataset.index = "2";
-let element3 = document.getElementById("slot-3");
-element3.addEventListener("click", select);
-element3.dataset.index = "3";
-let element4 = document.getElementById("slot-4");
-element4.addEventListener("click", select);
-element4.dataset.index = "4";
+window.addEventListener("click", speichern);
+//Daten speichern
 function select(_event) {
     let target = _event.target;
     console.log("Ausgewählt", target.dataset.index);
 }
 function speichern() {
     for (let i = 0; i < schale.length; i++) {
+        let div = document.createElement("div");
+        div.classList.add("col-1");
+        div.addEventListener("click", select);
+        div.dataset.index = i;
+        parent.appendChild(div); //oder .prepend() wenn Sie es an den Anfang wollen
     }
 }
 console.log(obst);
