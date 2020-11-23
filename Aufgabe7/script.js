@@ -15,11 +15,12 @@ let buttonNext = document.getElementById("next");
 function load(_e) {
     for (let i = 0; i < schale.length; i++) {
         let selectElement = document.getElementById("slot-1");
-        let optionImage = document.createElement(i);
-        selectElement.appendChild(optionImage);
-        console.log(i);
+        let optionImage = document.createElement("div");
+        optionImage.src = schale[i].bild;
+        selectElement.appendChild(optionImage.src);
+        console.log(schale[i]);
     }
 }
-window.onload = load;
+window.addEventListener("load", load);
 console.log(obst);
 //# sourceMappingURL=script.js.map

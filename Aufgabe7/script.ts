@@ -23,12 +23,15 @@ function load(_e: Event): void {
 
     for (let i = 0; i < schale.length; i++) {
         let selectElement: HTMLDivElement = <HTMLDivElement>document.getElementById("slot-1");
-        let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement(i);
-        selectElement.appendChild(optionImage);
-        console.log(i);
+        
+        let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement("div");
+        optionImage.src = schale[i].bild;
+        selectElement.appendChild(optionImage.src);
+        console.log(schale[i]);
     }
 }
-window.onload = load;
+window.addEventListener("load", load);
+
 // Interfaces
 
 interface Bild {
