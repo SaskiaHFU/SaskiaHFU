@@ -1,38 +1,51 @@
-// Next Button
+// // Next Button
 
-let buttonNext: HTMLButtonElement = <HTMLButtonElement> document.getElementById("next");
-buttonNext.addEventListener("click", clear);
-buttonNext.addEventListener("click", changeText);
+let buttonNext: HTMLButtonElement = <HTMLButtonElement>document.getElementById("next");
+// buttonNext.addEventListener("click", clear);
+// buttonNext.addEventListener("click", changeText);
 
-function clear (_e: Event): void {
-    let parent: HTMLDivElement = <HTMLDivElement> document.getElementById("pictures");
-    parent.innerHTML = "";
-        
+// function clear (_e: Event): void {
+//     let parent: HTMLDivElement = <HTMLDivElement> document.getElementById("pictures");
+//     parent.innerHTML = "";
+
+// }
+
+// function changeText1 (_e: Event): void {
+
+//     let element: HTMLDivElement = <HTMLDivElement> document.getElementById("change");
+//     element.textContent = "Text geändert";
+// }
+
+//Bilder anzeigen
+
+
+function load(_e: Event): void {
+
+    for (let i = 0; i < schale.length; i++) {
+        let selectElement: HTMLDivElement = <HTMLDivElement>document.getElementById("slot-1");
+        let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement(i);
+        selectElement.appendChild(optionImage);
+        console.log(i);
+    }
 }
-
-function changeText (_e: Event): void {
-
-    let element: HTMLDivElement = <HTMLDivElement> document.getElementById("change");
-    element.textContent = "Text geändert";
-}
-
-// Canvas
-
-let canvasSchaleEins: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("canvas-schale-eins");
-let context: CanvasRenderingContext2D = canvasSchaleEins.getContext("2d");
-
-context.fillStyle = "black";
-context.arc(75, 75, 35, 0, Math.PI, false); 
-
-console.log(canvasSchaleEins);
-
+window.onload = load;
 // Interfaces
 
-interface Bilder {
+interface Bild {
     groeße: string;
-    bild: CanvasImageData;
+    bild: string;
     name: string;
 }
+
+interface Obstsalat {
+
+    schale: Bild[];
+    fruechte: Bild[];
+    toppings: Bild[];
+}
+
+
+console.log(obst);
 
 
 
