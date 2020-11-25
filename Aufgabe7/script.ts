@@ -1,59 +1,58 @@
-// // Next Button
-
-let buttonNext: HTMLButtonElement = <HTMLButtonElement>document.getElementById("next");
-// buttonNext.addEventListener("click", clear);
-// buttonNext.addEventListener("click", changeText);
-
-// function clear (_e: Event): void {
-//     let parent: HTMLDivElement = <HTMLDivElement> document.getElementById("pictures");
-//     parent.innerHTML = "";
-
-// }
-
-// function changeText1 (_e: Event): void {
-
-//     let element: HTMLDivElement = <HTMLDivElement> document.getElementById("change");
-//     element.textContent = "Text geändert";
-// }
-
 //Bilder anzeigen
 
-function load(_e: Event): void {
+function bilder (_info: Bild[]): void {
+    let selectElement: HTMLDivElement = <HTMLDivElement>document.getElementById("row");
 
-    for (let i = 0; i < schale.length; i++) {
-        let selectElement: HTMLDivElement = <HTMLDivElement>document.getElementById("slot-1");
+    for (let i: number = 0; i < _info.length; i++) {
+        let div: HTMLDivElement = <HTMLDivElement>document.createElement("div");
 
-        let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement("div");
-        optionImage.src = schale[i].bild;
-        selectElement.appendChild(optionImage);
-        console.log(schale[i]);
+
+        div.className = ("col-1");
+        div.addEventListener("click", select);
+
+        selectElement.appendChild(div);
+
+        let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement("img");
+        optionImage.src = _info[i].bild;
+
+        div.dataset.index = i.toString();
+
+        div.appendChild(optionImage);
+        console.log(_info[i].bild);
     }
+} 
+
+//Auf unterschiedlichen Seiten Bilder laden
+
+function load(): void {
+
+    switch (window.location.pathname) {
+        case "seite_eins.html":
+        bilder(schale);
+        break;
+
+        case "seite_zwei.html":
+        bilder(fruechte);
+        break;
+
+        case "seite_drei.html":
+        bilder(toppings);
+        break;
+        
+    }
+    
 }
+
 window.addEventListener("load", load);
-window.addEventListener("click", speichern);
+
 
 //Daten speichern
 
 function select(_event: MouseEvent): void {
     let target: HTMLElement = <HTMLElement>_event.target;
+   
     console.log("Ausgewählt", target.dataset.index);
 }
-
-function speichern(): void {
-
-    for (let i = 0; i < schale.length; i++) {
-
-        let div: HTMLDivElement = document.createElement("div");
-        div.classList.add("col-1");
-        div.addEventListener("click", select);
-        div.dataset.index = i;
-        parent.appendChild(div); //oder .prepend() wenn Sie es an den Anfang wollen
-
-    }
-
-}
-
-
 
 
 // Interfaces
@@ -71,8 +70,6 @@ interface Obstsalat {
     toppings: Bild[];
 }
 
-
-console.log(obst);
 
 
 
