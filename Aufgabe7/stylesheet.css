@@ -82,7 +82,7 @@ h3 {
 
 }
 
-.row::after {
+#row::after {
 content: "";
 clear: both;
 display: block;
@@ -126,8 +126,6 @@ button {
     width: 100%;
     font-family: inherit;
 }
-
-/* -- Canvas--*/
 
 img {
     width: 90%;
