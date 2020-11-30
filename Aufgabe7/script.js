@@ -61,12 +61,14 @@ async function send(_url) {
     let response = await fetch(_url);
     console.log("Response", response);
     let selectElement = document.getElementById("letzte-bilder");
+    let params = new URLSearchParams();
     for (let i = 0; i < localStorage.length; i++) {
         let div = document.createElement("div");
         div.className = ("col-1");
         selectElement.appendChild(div);
         let optionImage = document.createElement("img");
         optionImage.src = localStorage.key(i) + ".JPG";
+        params.append(i.toString(), optionImage.src);
         div.appendChild(optionImage);
     }
     //aus JSON laden
@@ -76,7 +78,7 @@ async function send(_url) {
     // Platz generieren
     let responseServer = document.getElementById("antwort");
     let messageText = document.createElement("p");
-    let message = datenJson["messageText"];
+    let message = await response.json();
     //Catch
     if (messageText !== undefined) {
         console.log(messageText);

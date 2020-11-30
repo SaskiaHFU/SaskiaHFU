@@ -123,6 +123,8 @@ async function send(_url: RequestInfo): Promise<void> {
 
     let selectElement: HTMLDivElement = <HTMLDivElement>document.getElementById("letzte-bilder");
 
+    let params: URLSearchParams = new URLSearchParams();
+
     for (let i: number = 0; i < localStorage.length; i++) {
         let div: HTMLDivElement = <HTMLDivElement>document.createElement("div");
 
@@ -132,6 +134,7 @@ async function send(_url: RequestInfo): Promise<void> {
 
         let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement("img");
         optionImage.src = localStorage.key(i) + ".JPG";
+        params.append(i.toString(), optionImage.src);
 
 
         div.appendChild(optionImage);
@@ -146,7 +149,7 @@ async function send(_url: RequestInfo): Promise<void> {
     let responseServer: HTMLDivElement = <HTMLDivElement>document.getElementById("antwort");
     let messageText: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
 
-    let message: string = datenJson["messageText"];
+    let message: string = await response.json();
     
     //Catch
     if (messageText !== undefined) {
