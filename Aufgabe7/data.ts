@@ -161,5 +161,4 @@ let daten: string = `{
 }`;
 
 let obstsalat1: Obstsalat = JSON.parse(daten);
-console.log(obstsalat1);
 

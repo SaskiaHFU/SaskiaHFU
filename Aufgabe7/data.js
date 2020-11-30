@@ -141,5 +141,4 @@ let daten = `{
     ]
 }`;
 let obstsalat1 = JSON.parse(daten);
-console.log(obstsalat1);
 //# sourceMappingURL=data.js.map

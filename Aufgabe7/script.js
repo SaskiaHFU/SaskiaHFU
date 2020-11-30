@@ -71,7 +71,7 @@ async function send(_url) {
     }
     //aus JSON laden
     let jsonResponse = await fetch("https://raw.githubusercontent.com/SaskiaHFU/SaskiaHFU/main/Aufgabe7/data.json");
-    let datenJson = await response.json();
+    let datenJson = await jsonResponse.json();
     console.log(datenJson);
     // Platz generieren
     let responseServer = document.getElementById("antwort");
