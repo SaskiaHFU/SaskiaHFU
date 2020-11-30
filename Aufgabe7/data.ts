@@ -91,10 +91,6 @@
 // };
 
 
-
-
-
-
 let daten: string = `{
     "schale": [
         {

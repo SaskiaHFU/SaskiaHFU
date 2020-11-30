@@ -5,16 +5,13 @@ function bilder(_info) {
     for (let i = 0; i < _info.length; i++) {
         let div = document.createElement("div");
         div.className = ("col-1");
-        //
-        div.classList.add("val" + 1);
-        //
         div.addEventListener("click", select);
         selectElement.appendChild(div);
         let optionImage = document.createElement("img");
         optionImage.src = _info[i].bild;
-        div.dataset.index = i.toString();
+        div.dataset.index = _info[i].bild;
+        div.dataset.typ = _info[i].name;
         div.appendChild(optionImage);
-        console.log(_info[i].bild);
     }
 }
 // //Auf unterschiedlichen Seiten Bilder laden
@@ -39,11 +36,8 @@ window.addEventListener("load", load);
 //Daten speichern
 function select(_event) {
     let target = _event.currentTarget;
-    //
-    window.localStorage.setItem("Ausgewählt", document.getElementById("val").dataset.index);
-    console.log(localStorage.getItem("Ausgewählt"));
-    //
-    console.log("Ausgewählt", target);
+    window.localStorage.setItem(target.dataset.typ, target.dataset.index);
+    console.log(localStorage.getItem(target.dataset.typ));
 }
 function auslesen() {
     let selectElement = document.getElementById("letzte-bilder");
@@ -52,7 +46,7 @@ function auslesen() {
         div.className = ("col-1");
         selectElement.appendChild(div);
         let optionImage = document.createElement("img");
-        optionImage.src = localStorage.key(i);
+        optionImage.src = localStorage.key(i) + ".JPG";
         div.appendChild(optionImage);
     }
 }
@@ -62,4 +56,37 @@ endeButton.addEventListener("click", loeschen);
 function loeschen(_e) {
     window.localStorage.clear();
 }
+//asynchron
+async function send(_url) {
+    let response = await fetch(_url);
+    console.log("Response", response);
+    let selectElement = document.getElementById("letzte-bilder");
+    for (let i = 0; i < localStorage.length; i++) {
+        let div = document.createElement("div");
+        div.className = ("col-1");
+        selectElement.appendChild(div);
+        let optionImage = document.createElement("img");
+        optionImage.src = localStorage.key(i) + ".JPG";
+        div.appendChild(optionImage);
+    }
+    //aus JSON laden
+    let jsonResponse = await fetch("data.json");
+    let datenJson = await response.json();
+    // Platz generieren
+    let responseServer = document.getElementById("antwort");
+    let messageText = document.createElement("p");
+    let message = datenJson["messageText"];
+    //Catch
+    if (messageText !== undefined) {
+        console.log(messageText);
+        messageText.innerText = message;
+    }
+    let error = datenJson["error"];
+    if (error !== undefined) {
+        messageText.setAttribute("style", "color:red");
+        messageText.innerText = error;
+    }
+    responseServer.appendChild(messageText);
+}
+send("https://gis-communication.herokuapp.com");
 //# sourceMappingURL=script.js.map
