@@ -1,4 +1,4 @@
-let daten: string = `{
+ {
     "schale": [
         {
             "groeße": "20px",
@@ -65,7 +65,4 @@ let daten: string = `{
             "name": "schokolade"
         }
     ]
-}`;
-
-let obstsalat1: Obstsalat = JSON.parse(daten);
-console.log(obstsalat1);
+}

@@ -138,8 +138,9 @@ async function send(_url: RequestInfo): Promise<void> {
     }
 
     //aus JSON laden
-    let jsonResponse: Response = await fetch("data.json");
+    let jsonResponse: Response = await fetch("https://raw.githubusercontent.com/SaskiaHFU/SaskiaHFU/main/Aufgabe7/data.json");
     let datenJson = await response.json();
+    console.log(datenJson);
 
     // Platz generieren
     let responseServer: HTMLDivElement = <HTMLDivElement>document.getElementById("antwort");

@@ -70,8 +70,9 @@ async function send(_url) {
         div.appendChild(optionImage);
     }
     //aus JSON laden
-    let jsonResponse = await fetch("data.json");
+    let jsonResponse = await fetch("https://raw.githubusercontent.com/SaskiaHFU/SaskiaHFU/main/Aufgabe7/data.json");
     let datenJson = await response.json();
+    console.log(datenJson);
     // Platz generieren
     let responseServer = document.getElementById("antwort");
     let messageText = document.createElement("p");
