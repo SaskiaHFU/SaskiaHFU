@@ -38,6 +38,7 @@ function select(_event) {
     let target = _event.currentTarget;
     window.localStorage.setItem(target.dataset.typ, target.dataset.index);
     console.log(localStorage.getItem(target.dataset.typ));
+    document.getElementById("col-1").style.borderBottom = "thick solid red";
 }
 function auslesen() {
     let selectElement = document.getElementById("letzte-bilder");
@@ -46,7 +47,7 @@ function auslesen() {
         div.className = ("col-1");
         selectElement.appendChild(div);
         let optionImage = document.createElement("img");
-        optionImage.src = localStorage.key(i) + ".JPG";
+        optionImage.src = localStorage.getItem(i.toString());
         div.appendChild(optionImage);
     }
 }

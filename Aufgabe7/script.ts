@@ -67,6 +67,7 @@ function select(_event: MouseEvent): void {
 
     console.log(localStorage.getItem(target.dataset.typ));
 
+    document.getElementById("col-1").style.borderBottom = "thick solid red";
 }
 
 function auslesen(): void {
@@ -80,7 +81,7 @@ function auslesen(): void {
 
 
         let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement("img");
-        optionImage.src = localStorage.key(i) + ".JPG";
+        optionImage.src = localStorage.getItem(i.toString());
 
 
         div.appendChild(optionImage);
