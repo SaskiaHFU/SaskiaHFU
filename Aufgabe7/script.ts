@@ -63,7 +63,6 @@ window.addEventListener("load", load);
 function select(_event: MouseEvent): void {
     let target: HTMLElement = <HTMLElement>_event.currentTarget;
 
-
     window.localStorage.setItem(target.dataset.typ, target.dataset.index);
 
     console.log(localStorage.getItem(target.dataset.typ));
