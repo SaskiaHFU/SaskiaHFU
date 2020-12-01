@@ -150,7 +150,7 @@ async function send(_url: RequestInfo): Promise<void> {
     let messageText: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
 
     let message: string = await response.json();
-    
+
     //Catch
     if (messageText !== undefined) {
         console.log(messageText);
