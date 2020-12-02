@@ -140,5 +140,11 @@ let daten = `{
         }
     ]
 }`;
-let obstsalat1 = JSON.parse(daten);
+let obstsalat1;
+//aus JSON laden
+async function laden() {
+    let jsonResponse = await fetch("data.json");
+    obstsalat1 = await jsonResponse.json();
+    console.log(obstsalat1);
+}
 //# sourceMappingURL=data.js.map

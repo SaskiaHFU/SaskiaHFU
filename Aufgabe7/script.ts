@@ -1,6 +1,6 @@
 //Bilder anzeigen
 
-function bilder(_info: Bild[]): void {
+function bilder(_info: Bild[], _name: string): void {
 
     let selectElement: HTMLDivElement = <HTMLDivElement>document.getElementById("row");
 
@@ -17,8 +17,8 @@ function bilder(_info: Bild[]): void {
         let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement("img");
         optionImage.src = _info[i].bild;
 
-        div.dataset.index = _info[i].bild;
-        div.dataset.typ = _info[i].name;
+        div.dataset.index = i.toString();
+        div.dataset.typ = _name;
 
         div.appendChild(optionImage);
 
@@ -29,28 +29,30 @@ function bilder(_info: Bild[]): void {
 
 // //Auf unterschiedlichen Seiten Bilder laden
 
-function load(): void {
+async function load(): Promise <void> {
 
+    await laden();
 
     let zwischenString: string[] = window.location.pathname.split("/");
 
     switch (zwischenString[zwischenString.length - 1]) {
         case "seite_eins.html":
-            bilder(obstsalat1.schale);
+            bilder(obstsalat1.schale, "schale");
             break;
 
         case "seite_zwei.html":
 
-            bilder(obstsalat1.fruechte);
+            bilder(obstsalat1.fruechte, "fruechte");
             break;
 
         case "seite_drei.html":
 
-            bilder(obstsalat1.toppings);
+            bilder(obstsalat1.toppings, "toppings");
             break;
 
         case "ergebnis.html":
             auslesen();
+            send("https://gis-communication.herokuapp.com");
             break;
     }
 }
@@ -80,8 +82,14 @@ function auslesen(): void {
         selectElement.appendChild(div);
 
 
+        let schluessel: string = localStorage.key(i);
+        let value: number = parseInt (localStorage.getItem(schluessel)); //nummer in string speichern
+        let bild: Bild = (<Bild[]> obstsalat1[schluessel])[value];
+
+        console.log(bild);
+
         let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement("img");
-        optionImage.src = localStorage.getItem(i.toString());
+        optionImage.src = bild.bild;
 
 
         div.appendChild(optionImage);
@@ -107,6 +115,8 @@ interface Bild {
 
 interface Obstsalat {
 
+    [name: string]: Bild[]; 
+
     schale: Bild[];
     fruechte: Bild[];
     toppings: Bild[];
@@ -116,40 +126,24 @@ interface Obstsalat {
 
 //asynchron
 
-async function send(_url: RequestInfo): Promise<void> {
+async function send(_url: string): Promise<void> {
+
+
+
+    let params: URLSearchParams = new URLSearchParams(localStorage);
+    _url = _url + "?" + params.toString();
+
 
     let response: Response = await fetch(_url);
-    console.log("Response", response);
+    console.log("Response", await response.json());
 
-    let selectElement: HTMLDivElement = <HTMLDivElement>document.getElementById("letzte-bilder");
-
-    let params: URLSearchParams = new URLSearchParams();
-
-    for (let i: number = 0; i < localStorage.length; i++) {
-        let div: HTMLDivElement = <HTMLDivElement>document.createElement("div");
-
-        div.className = ("col-1");
-        selectElement.appendChild(div);
-
-
-        let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement("img");
-        optionImage.src = localStorage.key(i) + ".JPG";
-        params.append(i.toString(), optionImage.src);
-
-
-        div.appendChild(optionImage);
-    }
-
-    //aus JSON laden
-    let jsonResponse: Response = await fetch("https://raw.githubusercontent.com/SaskiaHFU/SaskiaHFU/main/Aufgabe7/data.json");
-    let datenJson = await jsonResponse.json();
-    console.log(datenJson);
+   
 
     // Platz generieren
-    let responseServer: HTMLDivElement = <HTMLDivElement>document.getElementById("antwort");
-    let messageText: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
+    // let responseServer: HTMLDivElement = <HTMLDivElement>document.getElementById("antwort");
+    // let messageText: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
 
-    let message: string = await response.json();
+
 
     //Catch
     if (messageText !== undefined) {
@@ -164,11 +158,13 @@ async function send(_url: RequestInfo): Promise<void> {
         messageText.innerText = error;
     }
 
-    responseServer.appendChild(messageText);
+    // responseServer.appendChild(messageText);
+
+    
 
 }
 
-send("https://gis-communication.herokuapp.com");
+
 
 
 

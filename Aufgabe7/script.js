@@ -1,6 +1,6 @@
 "use strict";
 //Bilder anzeigen
-function bilder(_info) {
+function bilder(_info, _name) {
     let selectElement = document.getElementById("row");
     for (let i = 0; i < _info.length; i++) {
         let div = document.createElement("div");
@@ -9,26 +9,28 @@ function bilder(_info) {
         selectElement.appendChild(div);
         let optionImage = document.createElement("img");
         optionImage.src = _info[i].bild;
-        div.dataset.index = _info[i].bild;
-        div.dataset.typ = _info[i].name;
+        div.dataset.index = i.toString();
+        div.dataset.typ = _name;
         div.appendChild(optionImage);
     }
 }
 // //Auf unterschiedlichen Seiten Bilder laden
-function load() {
+async function load() {
+    await laden();
     let zwischenString = window.location.pathname.split("/");
     switch (zwischenString[zwischenString.length - 1]) {
         case "seite_eins.html":
-            bilder(obstsalat1.schale);
+            bilder(obstsalat1.schale, "schale");
             break;
         case "seite_zwei.html":
-            bilder(obstsalat1.fruechte);
+            bilder(obstsalat1.fruechte, "fruechte");
             break;
         case "seite_drei.html":
-            bilder(obstsalat1.toppings);
+            bilder(obstsalat1.toppings, "toppings");
             break;
         case "ergebnis.html":
             auslesen();
+            send("https://gis-communication.herokuapp.com");
             break;
     }
 }
@@ -46,8 +48,12 @@ function auslesen() {
         let div = document.createElement("div");
         div.className = ("col-1");
         selectElement.appendChild(div);
+        let schluessel = localStorage.key(i);
+        let value = parseInt(localStorage.getItem(schluessel)); //nummer in string speichern
+        let bild = obstsalat1[schluessel][value];
+        console.log(bild);
         let optionImage = document.createElement("img");
-        optionImage.src = localStorage.getItem(i.toString());
+        optionImage.src = bild.bild;
         div.appendChild(optionImage);
     }
 }
@@ -59,27 +65,13 @@ function loeschen(_e) {
 }
 //asynchron
 async function send(_url) {
+    let params = new URLSearchParams(localStorage);
+    _url = _url + "?" + params.toString();
     let response = await fetch(_url);
-    console.log("Response", response);
-    let selectElement = document.getElementById("letzte-bilder");
-    let params = new URLSearchParams();
-    for (let i = 0; i < localStorage.length; i++) {
-        let div = document.createElement("div");
-        div.className = ("col-1");
-        selectElement.appendChild(div);
-        let optionImage = document.createElement("img");
-        optionImage.src = localStorage.key(i) + ".JPG";
-        params.append(i.toString(), optionImage.src);
-        div.appendChild(optionImage);
-    }
-    //aus JSON laden
-    let jsonResponse = await fetch("https://raw.githubusercontent.com/SaskiaHFU/SaskiaHFU/main/Aufgabe7/data.json");
-    let datenJson = await jsonResponse.json();
-    console.log(datenJson);
+    console.log("Response", await response.json());
     // Platz generieren
-    let responseServer = document.getElementById("antwort");
-    let messageText = document.createElement("p");
-    let message = await response.json();
+    // let responseServer: HTMLDivElement = <HTMLDivElement>document.getElementById("antwort");
+    // let messageText: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
     //Catch
     if (messageText !== undefined) {
         console.log(messageText);
@@ -90,7 +82,6 @@ async function send(_url) {
         messageText.setAttribute("style", "color:red");
         messageText.innerText = error;
     }
-    responseServer.appendChild(messageText);
+    // responseServer.appendChild(messageText);
 }
-send("https://gis-communication.herokuapp.com");
 //# sourceMappingURL=script.js.map
