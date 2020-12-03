@@ -29,7 +29,7 @@ function bilder(_info: Bild[], _name: string): void {
 
 // //Auf unterschiedlichen Seiten Bilder laden
 
-async function load(): Promise <void> {
+async function load(): Promise<void> {
 
     await laden();
 
@@ -69,7 +69,7 @@ function select(_event: MouseEvent): void {
 
     console.log(localStorage.getItem(target.dataset.typ));
 
-    document.getElementById("col-1").style.borderBottom = "thick solid red";
+
 }
 
 function auslesen(): void {
@@ -83,8 +83,8 @@ function auslesen(): void {
 
 
         let schluessel: string = localStorage.key(i);
-        let value: number = parseInt (localStorage.getItem(schluessel)); //nummer in string speichern
-        let bild: Bild = (<Bild[]> obstsalat1[schluessel])[value];
+        let value: number = parseInt(localStorage.getItem(schluessel)); //nummer in string speichern
+        let bild: Bild = (<Bild[]>obstsalat1[schluessel])[value];
 
         console.log(bild);
 
@@ -115,14 +115,18 @@ interface Bild {
 
 interface Obstsalat {
 
-    [name: string]: Bild[]; 
+    [name: string]: Bild[];
 
     schale: Bild[];
     fruechte: Bild[];
     toppings: Bild[];
 }
 
+interface MessageServer {
 
+    message: string;
+    error: string;
+}
 
 //asynchron
 
@@ -137,32 +141,33 @@ async function send(_url: string): Promise<void> {
     let response: Response = await fetch(_url);
     console.log("Response", await response.json());
 
-   
+
 
     // Platz generieren
-    // let responseServer: HTMLDivElement = <HTMLDivElement>document.getElementById("antwort");
-    // let messageText: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
+    let responseServer: HTMLDivElement = <HTMLDivElement>document.getElementById("antwort");
+    let messageText: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
 
+//  '   let message: string = response ["message"];'
 
+    // //Catch
+    // if (MessageServer.message !== undefined) {
+    //     messageText.innerText = message;
 
-    //Catch
-    if (messageText !== undefined) {
-        console.log(messageText);
-        messageText.innerText = message;
-    }
+    // }
 
-    let error: string = datenJson["error"];
+    // // let error: string = response ["error"];
 
-    if (error !== undefined) {
-        messageText.setAttribute("style", "color:red");
-        messageText.innerText = error;
-    }
+    // if (MessageServer.error !== undefined) {
+    //     messageText.setAttribute("style", "color:red");
+    //     messageText.innerText = error;
+    // }
 
     // responseServer.appendChild(messageText);
 
-    
+
 
 }
+
 
 
 

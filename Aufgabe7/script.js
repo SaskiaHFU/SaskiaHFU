@@ -40,7 +40,6 @@ function select(_event) {
     let target = _event.currentTarget;
     window.localStorage.setItem(target.dataset.typ, target.dataset.index);
     console.log(localStorage.getItem(target.dataset.typ));
-    document.getElementById("col-1").style.borderBottom = "thick solid red";
 }
 function auslesen() {
     let selectElement = document.getElementById("letzte-bilder");
@@ -70,18 +69,18 @@ async function send(_url) {
     let response = await fetch(_url);
     console.log("Response", await response.json());
     // Platz generieren
-    // let responseServer: HTMLDivElement = <HTMLDivElement>document.getElementById("antwort");
-    // let messageText: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
+    let responseServer = document.getElementById("antwort");
+    let messageText = document.createElement("p");
+    let message = response["message"];
     //Catch
-    if (messageText !== undefined) {
-        console.log(messageText);
+    if (message !== undefined) {
         messageText.innerText = message;
     }
-    let error = datenJson["error"];
+    let error = response["error"];
     if (error !== undefined) {
         messageText.setAttribute("style", "color:red");
         messageText.innerText = error;
     }
-    // responseServer.appendChild(messageText);
+    responseServer.appendChild(messageText);
 }
 //# sourceMappingURL=script.js.map
