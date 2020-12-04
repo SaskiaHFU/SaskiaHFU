@@ -81,11 +81,14 @@ h3 {
     margin-right: auto;
 
 }
+.row{
+    content: "";
+    clear: both;   
+}
 
-#row::after {
+.row::after {
 content: "";
 clear: both;
-display: block;
 }
 
 [class*='col-'] {
@@ -128,7 +131,7 @@ button {
 }
 
 img {
-    width: 90%;
-    height: 120%;
+    width: 100%;
+    height: 100%;
     border: 2px solid black;
 }
