@@ -164,7 +164,7 @@ let obstsalat1: Obstsalat;
 
 //aus JSON laden
 async function laden(): Promise<void> {
-    let jsonResponse: Response = await fetch("data.json");
+    let jsonResponse: Response = await fetch("https://raw.githubusercontent.com/SaskiaHFU/SaskiaHFU/main/Aufgabe7/data.json");
     obstsalat1 = await jsonResponse.json();
     console.log(obstsalat1);
 }

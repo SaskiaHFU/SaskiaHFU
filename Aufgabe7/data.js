@@ -143,7 +143,7 @@ let daten = `{
 let obstsalat1;
 //aus JSON laden
 async function laden() {
-    let jsonResponse = await fetch("data.json");
+    let jsonResponse = await fetch("https://raw.githubusercontent.com/SaskiaHFU/SaskiaHFU/main/Aufgabe7/data.json");
     obstsalat1 = await jsonResponse.json();
     console.log(obstsalat1);
 }
