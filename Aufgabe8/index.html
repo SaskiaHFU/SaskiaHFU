@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Kontakt</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scriptClient.js" defer></script>
+</head>
+
+<body>
+
+    <!--Navigation-->
+    
+    <nav class="header-nav">
+
+        <div class="container desktop-nav">
+            <div class="row">
+                <div class="col-4">
+                   
+                <a href="index.html">
+                    <p>Formular</p>
+                </a>
+                <ul>
+                    <li><a href="user.html">User</a><i>|</i></li>
+                    <li><a href="einloggen.html">Einloggen</a></li>
+                </ul> 
+                </div>
+            </div>
+        </div>
+    </nav>
+<!---BODY-->
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-4" id="kontakt-bereich">
+                
+                <h2 id="contact"> Hier ist das Kontaktformular </h2>
+                    <form id="register-form" method="get" >
+
+                        <input class="input-form" name="vorname" placeholder="VORNAME"> 
+                        <input class="input-form" name="nachname"placeholder="NACHNAME">
+                        <input class="input-form" name="email"placeholder="E-MAIL">
+                        <input class="input-form" name="passwort"placeholder="PASSWORT" type="password">
+
+                        <p class="input-form">Mit Absenden dieser Nachricht stimmst du dem Datenschutz zu</p>
+                        <button id="submitButton" name="Absenden" type="button">Absenden</button>
+                        <button id="resetButton" name="Reset" type="reset">Löschen</button>
+                    </form> 
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

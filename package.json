@@ -1,0 +1,21 @@
+{
+  "name": "saskiahfu",
+  "version": "1.0.0",
+  "description": "SaskiaHFU",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node Aufgabe8/scriptServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaskiaHFU/SaskiaHFU.git"
+  },
+  "author": "Saskia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaskiaHFU/SaskiaHFU/issues"
+  },
+  "homepage": "https://github.com/SaskiaHFU/SaskiaHFU#readme"
+}
