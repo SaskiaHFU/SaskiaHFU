@@ -1,9 +1,9 @@
 "use strict";
 //Register
-let registerForm = document.getElementById("register-form");
-let registerButton = document.getElementById("registerButton");
+let loginForm = document.getElementById("login-form");
+let loginButton = document.getElementById("loginButton");
 registerButton.addEventListener("click", submitToServer);
-let url = "http://localhost:8100/";
+let loginURL = "http://localhost:8100/";
 async function submitToServer(_event) {
     let formData = new FormData(document.forms[0]);
     let query = new URLSearchParams(formData);
@@ -22,9 +22,9 @@ async function showData(_url) {
     }
 }
 //Form clear
-let resetButton = document.getElementById("resetButton");
-resetButton.addEventListener("click", reset);
-function reset(_e) {
-    registerForm.reset();
-}
+// let resetButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("resetButton");
+// resetButton.addEventListener("click", reset);
+// function reset(_e: Event): void {
+//     registerForm.reset();
+// }
 //# sourceMappingURL=scriptClient.js.map

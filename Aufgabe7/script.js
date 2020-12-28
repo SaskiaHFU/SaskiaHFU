@@ -55,7 +55,7 @@ function select(_event) {
 }
 //Daten löschen
 let endeButton = document.getElementById("ende");
-endeButton.addEventListener("click", loeschen);
+// endeButton.addEventListener("click", loeschen);
 function loeschen(_e) {
     window.localStorage.clear();
 }

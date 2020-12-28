@@ -1,11 +1,11 @@
 
 //Register
-let registerForm: HTMLFormElement = <HTMLFormElement>document.getElementById("register-form");
+let loginForm: HTMLFormElement = <HTMLFormElement>document.getElementById("login-form");
 
-let registerButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("registerButton");
+let loginButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("loginButton");
 registerButton.addEventListener("click", submitToServer);
 
-let url: string = "http://localhost:8100/";
+let loginURL: string = "http://localhost:8100/";
 
 async function submitToServer(_event: Event): Promise<void> {
 
@@ -27,7 +27,7 @@ async function submitToServer(_event: Event): Promise<void> {
 // Show Data
 
 async function showData(_url: string): Promise<void> {
-    let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+    let q: URL.UrlWithParsedQuery = Url.parse(_request.url, true);
 
     for (let key in q.query) {
         _response.write(key + ":" + q.query[key] + "<br/>");
@@ -39,12 +39,12 @@ async function showData(_url: string): Promise<void> {
 
 //Form clear
 
-let resetButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("resetButton");
-resetButton.addEventListener("click", reset);
+// let resetButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("resetButton");
+// resetButton.addEventListener("click", reset);
 
-function reset(_e: Event): void {
-    registerForm.reset();
-}
+// function reset(_e: Event): void {
+//     registerForm.reset();
+// }
 
 
 

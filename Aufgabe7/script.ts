@@ -85,7 +85,7 @@ function select(_event: MouseEvent): void {
 
 //Daten löschen
 let endeButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ende");
-endeButton.addEventListener("click", loeschen);
+// endeButton.addEventListener("click", loeschen);
 
 function loeschen(_e: EventListener): void {
 

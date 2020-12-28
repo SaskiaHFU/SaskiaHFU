@@ -38,7 +38,7 @@ let button2: HTMLButtonElement = <HTMLButtonElement>document.getElementById("but
 
 
 button1.addEventListener("click", addSquare);
-button2.addEventListener("click", loeschen);
+// button2.addEventListener("click", loeschen);
 
 function addSquare(_event: Event): void {
 
@@ -49,11 +49,11 @@ function addSquare(_event: Event): void {
     div.style.marginLeft = (Math.random() * 200).toString() + "px";
     document.getElementById("fuellen")?.appendChild(div);
 }
-function loeschen(_event: Event): void {
+// function loeschen(_event: Event): void {
 
-    let parent: HTMLDivElement = <HTMLDivElement>document.getElementById("fuellen");
-    parent.innerHTML = "";
-}
+//     let parent: HTMLDivElement = <HTMLDivElement>document.getElementById("fuellen");
+//     parent.innerHTML = "";
+// }
 
 
 

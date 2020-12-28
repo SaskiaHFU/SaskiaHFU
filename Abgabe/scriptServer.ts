@@ -65,25 +65,6 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 
     }
 
-    // let zwischenString: string[] = _request.url.split("/");
-
-    // switch (zwischenString[zwischenString.length - 1]) {
-    //     case "/html":
-    //         let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-
-    //         for (let key in q.query) {
-    //             _response.write(key + ":" + q.query[key] + "<br/>");
-    //         }
-    //         break;
-
-    //     case "/json":
-
-    //         let stringJSON: string = JSON.stringify(q.query);
-    //         _response.write(stringJSON);
-    //         break;
-
-    // }
-
     _response.end();
 
 }
@@ -117,41 +98,10 @@ function checkMail(_mail: User): void {
     user.find({ "email": _mail });
 
 
-    // user.find({ "email": _mail }, function (_err: string, _user: User): void {
-
-    //     if (_err) {
-
-    //         alert("Signup error");
-    //     }
-
-    //     if (user.length ! = 0) {
-    //         if (user[0]._mail) {
-
-    //             alert("EMAIL bereits vorhanden, email: " + _mail);
-    //         }
-    //         let err: any  = new Error();
-    //         err.status = 310;
-
-
-    //     }
-    // });
-
 }
 
 function showData() {
-
-    let client = require("mongodb").Mon
-    if (!error) {
-        let collection: Mongo.Collection = db.user("email");
-        let cursor = collection.find();
-        cursor.forEach((error: Error, document: User) => {
-
-            console.log(
-            document.email);
-        };
-        ))
-        
-    }
+//
     
     
 }

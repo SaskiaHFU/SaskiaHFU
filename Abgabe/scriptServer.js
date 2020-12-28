@@ -37,19 +37,6 @@ function handleRequest(_request, _response) {
         registerUser(q.query);
         checkMail(q.query);
     }
-    // let zwischenString: string[] = _request.url.split("/");
-    // switch (zwischenString[zwischenString.length - 1]) {
-    //     case "/html":
-    //         let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-    //         for (let key in q.query) {
-    //             _response.write(key + ":" + q.query[key] + "<br/>");
-    //         }
-    //         break;
-    //     case "/json":
-    //         let stringJSON: string = JSON.stringify(q.query);
-    //         _response.write(stringJSON);
-    //         break;
-    // }
     _response.end();
 }
 function handleListen() {
@@ -70,27 +57,8 @@ function registerUser(_user) {
 }
 function checkMail(_mail) {
     user.find({ "email": _mail });
-    // user.find({ "email": _mail }, function (_err: string, _user: User): void {
-    //     if (_err) {
-    //         alert("Signup error");
-    //     }
-    //     if (user.length ! = 0) {
-    //         if (user[0]._mail) {
-    //             alert("EMAIL bereits vorhanden, email: " + _mail);
-    //         }
-    //         let err: any  = new Error();
-    //         err.status = 310;
-    //     }
-    // });
 }
 function showData() {
-    let client = require("mongodb").Mon;
-    if (!error) {
-        let collection = db.user("email");
-        let cursor = collection.find();
-        cursor.forEach((error, document) => {
-            console.log(document.email);
-        });
-    }
+    //
 }
 //# sourceMappingURL=scriptServer.js.map

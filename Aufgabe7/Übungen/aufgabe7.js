@@ -25,7 +25,7 @@ div2.addEventListener("click", changeColor);
 let button1 = document.getElementById("button1");
 let button2 = document.getElementById("button2");
 button1.addEventListener("click", addSquare);
-button2.addEventListener("click", loeschen);
+// button2.addEventListener("click", loeschen);
 function addSquare(_event) {
     let div = document.createElement("div");
     div.style.backgroundColor = "black";
@@ -34,8 +34,8 @@ function addSquare(_event) {
     div.style.marginLeft = (Math.random() * 200).toString() + "px";
     document.getElementById("fuellen")?.appendChild(div);
 }
-function loeschen(_event) {
-    let parent = document.getElementById("fuellen");
-    parent.innerHTML = "";
-}
+// function loeschen(_event: Event): void {
+//     let parent: HTMLDivElement = <HTMLDivElement>document.getElementById("fuellen");
+//     parent.innerHTML = "";
+// }
 //# sourceMappingURL=aufgabe7.js.map
