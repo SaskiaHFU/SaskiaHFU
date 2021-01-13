@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="scriptClient.js" defer></script>
+    <script src="einloggen.js" defer></script>
 </head>
 
 <body>
@@ -38,11 +39,14 @@
         <div class="col-4" id="kontakt-bereich">
             
             <h2 id="contact"> Gib deine Daten ein um dich einzuloggen </h2>
-                <form id="message-form">
+                <form id="login-form">
                     <input class="input-form" placeholder="E-MAIL">
                     <input class="input-form" placeholder="PASSWORT" placeholder="PASSWORT">
                     <button id="loginButton" name="Absenden" type="button">Einloggen</button>
                 </form> 
+
+                <div id="serverresult">
+                </div>
         </div>
     </div>
 </div>

@@ -11,6 +11,15 @@ interface User {
 let databaseUrl: string = "mongodb://localhost:27017";
 let user: Mongo.Collection;
 
+// Status Codes
+
+const enum StatusCodes {
+    Good = 1,
+    BadDatabaseProblem = 2,
+    BadEmailExists = 3,
+    BadWrongPassword = 4
+}
+
 
 //Port und Server erstellen
 
@@ -44,14 +53,15 @@ function startServer(_port: number | string): void {
 
 //Funktionen
 
-function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
     console.log("I hear voices!");
 
     _response.setHeader("content-type", "text/html; charset=utf-8");
     _response.setHeader("Access-Control-Allow-Origin", "*");
 
+    let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
     if (_request.url) {
-        let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+
 
         for (let key in q.query) {
             _response.write(key + ":" + q.query[key] + "<br/>");
@@ -61,28 +71,53 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
         _response.write(stringJSON);
 
         registerUser(q.query);
-        checkMail(q.query);
 
     }
 
-    // let zwischenString: string[] = _request.url.split("/");
+    if (q.pathname == "/einloggen") {
 
-    // switch (zwischenString[zwischenString.length - 1]) {
-    //     case "/html":
-    //         let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        let queryParameters: any = q.query;
 
-    //         for (let key in q.query) {
-    //             _response.write(key + ":" + q.query[key] + "<br/>");
-    //         }
-    //         break;
+        let loginResult: StatusCodes = await loginUser(queryParameters.email as string, queryParameters.passwort as string);
 
-    //     case "/json":
+        _response.write(String(loginResult));
 
-    //         let stringJSON: string = JSON.stringify(q.query);
-    //         _response.write(stringJSON);
-    //         break;
+    }
+    else if (q.pathname == "/index") {
 
-    // }
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+
+        let queryParameters: any = q.query;
+
+        let user: User = new User(
+
+            queryParameters.vorname as string,
+            queryParameters.nachname as string,
+            queryParameters.email as string
+
+        );
+
+        user.passwort = queryParameters.passwort as string;
+
+        let registerResult: StatusCodes = await registerUser(user);
+
+        _response.write(String(registerResult));
+    }
+
+    else if (q.pathname == "/user") {
+
+        _response.setHeader("content-type", "application/json; charset=utf-8");
+
+        let users: User[] = await getUsers();
+
+        _response.write(JSON.stringify(users));
+    }
+
+    else {
+        //Fehler auffangen
+        console.log(_request.url);
+    }
 
     _response.end();
 
@@ -107,53 +142,71 @@ async function connectToDatabase(_url: string): Promise<void> {
     console.log("Database connection", user != undefined);
 }
 
-function registerUser(_user: User): void {
-    user.insertOne(_user);
-}
+async function registerUser(_user: User): Promise<StatusCodes> {
 
-function checkMail(_mail: User): void {
+    let users: Mongo.Collection = mongoClient.db("Formulare").collection("User");
+    var userExistCount: number = await users.countDocuments({"email": user.email});
 
-
-    user.find({ "email": _mail });
-
-
-    // user.find({ "email": _mail }, function (_err: string, _user: User): void {
-
-    //     if (_err) {
-
-    //         alert("Signup error");
-    //     }
-
-    //     if (user.length ! = 0) {
-    //         if (user[0]._mail) {
-
-    //             alert("EMAIL bereits vorhanden, email: " + _mail);
-    //         }
-    //         let err: any  = new Error();
-    //         err.status = 310;
-
-
-    //     }
-    // });
-
-}
-
-function showData() {
-
-    let client = require("mongodb").Mon
-    if (!error) {
-        let collection: Mongo.Collection = db.user("email");
-        let cursor = collection.find();
-        cursor.forEach((error: Error, document: User) => {
-
-            console.log(
-            document.email);
-        };
-        ))
-        
+    if (userExistCount > 0) {
+        // User existiert weil Dokument gefunden also > 0 Dokumente
+        return StatusCodes.BadEmailExists;
     }
+    else {
+        
+        let result: any = await users.insertOne(_user);
     
-    
+        //Rückmeldung dass es funktioniert hat
+        if (result.insertedCount == 1) {
+            
+            return StatusCodes.Good;
+        }
+        else {
+            
+            return StatusCodes.BadDatabaseProblem;
+        }
+    }
+}
+
+
+async function loginUser(_email: string, _passwort: string): Promise<StatusCodes> {
+
+    let user: Mongo.Collection = Mongo.MongoClient.db("Formulare").collection("User");
+    let userExistCount: number = await user.countDocuments({ "email": _email, "passwort": _passwort });
+
+
+    //Rückmeldung dass es funktioniert hat
+    if (userExistCount > 0) {
+        // User eingeloggt weil Dokument gefunden also > 0 Dokumente
+        return StatusCodes.Good;
+    }
+
+    else {
+        return StatusCodes.BadWrongPassword;
+    }
+   
+}
+
+async function getUsers(): Promise<User[]> {
+
+    let userCollection: Mongo.Collection = mongoClient.db("Formulare").collection("Users");
+    let userDocuments: any[] = await userCollection.find().toArray();
+
+    let users: User[] = [];
+
+    for (let userDocument of userDocuments) {
+
+        let user: User = new User(
+
+            userDocument.vorname as string,
+            userDocument.nachname as string,
+            userDocument.email as string
+        );
+
+        users.push(user);
+    }
+
+    return users;
+
 }
 
 

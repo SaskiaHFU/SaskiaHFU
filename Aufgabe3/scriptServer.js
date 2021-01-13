@@ -23,33 +23,42 @@ function startServer(_port) {
     server.addListener("listening", handleListen);
 }
 //Funktionen
-function handleRequest(_request, _response) {
+async function handleRequest(_request, _response) {
     console.log("I hear voices!");
     _response.setHeader("content-type", "text/html; charset=utf-8");
     _response.setHeader("Access-Control-Allow-Origin", "*");
+    let q = Url.parse(_request.url, true);
     if (_request.url) {
-        let q = Url.parse(_request.url, true);
         for (let key in q.query) {
             _response.write(key + ":" + q.query[key] + "<br/>");
         }
         let stringJSON = JSON.stringify(q.query);
         _response.write(stringJSON);
         registerUser(q.query);
-        checkMail(q.query);
     }
-    // let zwischenString: string[] = _request.url.split("/");
-    // switch (zwischenString[zwischenString.length - 1]) {
-    //     case "/html":
-    //         let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-    //         for (let key in q.query) {
-    //             _response.write(key + ":" + q.query[key] + "<br/>");
-    //         }
-    //         break;
-    //     case "/json":
-    //         let stringJSON: string = JSON.stringify(q.query);
-    //         _response.write(stringJSON);
-    //         break;
-    // }
+    if (q.pathname == "/einloggen") {
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        let queryParameters = q.query;
+        let loginResult = await loginUser(queryParameters.email, queryParameters.passwort);
+        _response.write(String(loginResult));
+    }
+    else if (q.pathname == "/index") {
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        let queryParameters = q.query;
+        let user = new User(queryParameters.vorname, queryParameters.nachname, queryParameters.email);
+        user.passwort = queryParameters.passwort;
+        let registerResult = await registerUser(user);
+        _response.write(String(registerResult));
+    }
+    else if (q.pathname == "/user") {
+        _response.setHeader("content-type", "application/json; charset=utf-8");
+        let users = await getUsers();
+        _response.write(JSON.stringify(users));
+    }
+    else {
+        //Fehler auffangen
+        console.log(_request.url);
+    }
     _response.end();
 }
 function handleListen() {
@@ -65,32 +74,44 @@ async function connectToDatabase(_url) {
     user = mongoClient.db("Formulare").collection("User");
     console.log("Database connection", user != undefined);
 }
-function registerUser(_user) {
-    user.insertOne(_user);
-}
-function checkMail(_mail) {
-    user.find({ "email": _mail });
-    // user.find({ "email": _mail }, function (_err: string, _user: User): void {
-    //     if (_err) {
-    //         alert("Signup error");
-    //     }
-    //     if (user.length ! = 0) {
-    //         if (user[0]._mail) {
-    //             alert("EMAIL bereits vorhanden, email: " + _mail);
-    //         }
-    //         let err: any  = new Error();
-    //         err.status = 310;
-    //     }
-    // });
-}
-function showData() {
-    let client = require("mongodb").Mon;
-    if (!error) {
-        let collection = db.user("email");
-        let cursor = collection.find();
-        cursor.forEach((error, document) => {
-            console.log(document.email);
-        });
+async function registerUser(_user) {
+    let users = mongoClient.db("Formulare").collection("User");
+    var userExistCount = await users.countDocuments({ "email": user.email });
+    if (userExistCount > 0) {
+        // User existiert weil Dokument gefunden also > 0 Dokumente
+        return 3 /* BadEmailExists */;
     }
+    else {
+        let result = await users.insertOne(_user);
+        //Rückmeldung dass es funktioniert hat
+        if (result.insertedCount == 1) {
+            return 1 /* Good */;
+        }
+        else {
+            return 2 /* BadDatabaseProblem */;
+        }
+    }
+}
+async function loginUser(_email, _passwort) {
+    let user = Mongo.MongoClient.db("Formulare").collection("User");
+    let userExistCount = await user.countDocuments({ "email": _email, "passwort": _passwort });
+    //Rückmeldung dass es funktioniert hat
+    if (userExistCount > 0) {
+        // User eingeloggt weil Dokument gefunden also > 0 Dokumente
+        return 1 /* Good */;
+    }
+    else {
+        return 4 /* BadWrongPassword */;
+    }
+}
+async function getUsers() {
+    let userCollection = mongoClient.db("Formulare").collection("Users");
+    let userDocuments = await userCollection.find().toArray();
+    let users = [];
+    for (let userDocument of userDocuments) {
+        let user = new User(userDocument.vorname, userDocument.nachname, userDocument.email);
+        users.push(user);
+    }
+    return users;
 }
 //# sourceMappingURL=scriptServer.js.map

@@ -10,7 +10,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "node Aufgabe8/scriptServer.js",
-    "db": "..\\MongoDB\\Server\\4.4\\bin\\mongod.exe --dbpath ./Aufgabe8/db"
+    "db": "..\\MongoDB\\Server\\4.4\\bin\\mongod.exe --dbpath ./Aufgabe3/db"
   },
   "repository": {
     "type": "git",
