@@ -8,7 +8,7 @@ async function getUsers(): Promise <void> {
     let response: Response = await fetch(url + "user");
     let users: User[] = await response.json();
 
-    let userDiv: HTMLElement = document.getElementById("users");
+    let usersDiv: HTMLElement = document.getElementById("users");
 
     let userCount: number = 0;
 
@@ -21,9 +21,8 @@ async function getUsers(): Promise <void> {
         attributes.set("Nachname: ", user.Nachname);
         attributes.set("Email ", user.Email);
 
+        userDiv.appendChild(usersDiv); 
+        userCount++;
     }
-
-    userDiv.appendChild(userDiv);
-    userCount++;
     
 }

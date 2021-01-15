@@ -1,10 +1,5 @@
 "use strict";
-let url = "http://localhost:8100/";
+//TS für alle unter TS
+let url = "https://saskiagis2020.herokuapp.com/";
 let oldLoginResultText;
-//Form clear
-let resetButton = document.getElementById("resetButton");
-resetButton.addEventListener("click", reset);
-function reset(_e) {
-    registerForm.reset();
-}
 //# sourceMappingURL=scriptClient.js.map

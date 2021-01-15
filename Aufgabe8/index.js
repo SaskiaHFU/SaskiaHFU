@@ -40,4 +40,10 @@ async function submitToServerRegister(_event) {
     }
     oldLoginResultText = responseField;
 }
+//Form clear
+let resetButton = document.getElementById("resetButton");
+resetButton.addEventListener("click", reset);
+function reset(_e) {
+    registerForm.reset();
+}
 //# sourceMappingURL=index.js.map

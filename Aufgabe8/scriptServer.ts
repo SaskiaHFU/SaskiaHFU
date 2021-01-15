@@ -5,10 +5,19 @@ import * as Mongo from "mongodb";
 //Variablen festlegen
 
 interface User {
-    [type: string]: string | string[];
+
+    "vorname": string;
+    "nachname": string;
+    "email": string;
+    [passwort: string]: string;
+
 }
 
-let databaseUrl: string = "mongodb://localhost:27017";
+interface Query {
+    [type: string]: string;
+}
+
+let databaseUrl: string = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/Saskia?retryWrites=true&w=majority";
 let user: Mongo.Collection;
 
 // Status Codes
@@ -60,49 +69,52 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
     _response.setHeader("Access-Control-Allow-Origin", "*");
 
     let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-    if (_request.url) {
+    // if (_request.url) {
 
 
-        for (let key in q.query) {
-            _response.write(key + ":" + q.query[key] + "<br/>");
-        }
+    //     for (let key in q.query) {
+    //         _response.write(key + ":" + q.query[key] + "<br/>");
+    //     }
 
-        let stringJSON: string = JSON.stringify(q.query);
-        _response.write(stringJSON);
+    //     let stringJSON: string = JSON.stringify(q.query);
+    //     _response.write(stringJSON);
 
-        registerUser(q.query);
+    //     registerUser(q.query);
 
-    }
+    // }
 
     if (q.pathname == "/einloggen") {
 
         _response.setHeader("content-type", "text/html; charset=utf-8");
-        let queryParameters: any = q.query;
+        let queryParameters: Query = <Query>q.query;
 
         let loginResult: StatusCodes = await loginUser(queryParameters.email as string, queryParameters.passwort as string);
 
         _response.write(String(loginResult));
+        console.log("einloggen Seite");
 
     }
     else if (q.pathname == "/index") {
 
         _response.setHeader("content-type", "text/html; charset=utf-8");
 
-        let queryParameters: any = q.query;
+        let queryParameters: Query = <Query>q.query;
 
-        let user: User = new User(
+        let user: User = {
 
-            queryParameters.vorname as string,
-            queryParameters.nachname as string,
-            queryParameters.email as string
+            "vorname": queryParameters.vorname as string,
+            "nachname": queryParameters.nachname as string,
+            "email": queryParameters.email as string
 
-        );
-
+        };
+        //Passwort extra weil es nicht im Datenbank Profil stehen soll
         user.passwort = queryParameters.passwort as string;
 
         let registerResult: StatusCodes = await registerUser(user);
 
         _response.write(String(registerResult));
+
+        console.log("Registrieren Seite");
     }
 
     else if (q.pathname == "/user") {
@@ -112,10 +124,12 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
         let users: User[] = await getUsers();
 
         _response.write(JSON.stringify(users));
+
+        console.log("Liste Seite");
     }
 
     else {
-        //Fehler auffangen
+        //Fehler auffangen 
         console.log(_request.url);
     }
 
@@ -127,14 +141,14 @@ function handleListen(): void {
     console.log("Listening");
 }
 
-//Datenbank
+//Datenbank functions
 
 async function connectToDatabase(_url: string): Promise<void> {
     console.log("Connected to Database");
 
+    //Create Mongo Client
     let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
-
-    let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+    let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options);
     await mongoClient.connect();
     console.log("Connected to Client");
 
@@ -144,33 +158,36 @@ async function connectToDatabase(_url: string): Promise<void> {
 
 async function registerUser(_user: User): Promise<StatusCodes> {
 
-    let users: Mongo.Collection = mongoClient.db("Formulare").collection("User");
-    var userExistCount: number = await users.countDocuments({"email": user.email});
+    console.log("Registrieren");
+    var userExistCount: number = await user.countDocuments({ "email": _user.email });
 
     if (userExistCount > 0) {
         // User existiert weil Dokument gefunden also > 0 Dokumente
         return StatusCodes.BadEmailExists;
     }
     else {
-        
-        let result: any = await users.insertOne(_user);
-    
+
+        let result: Mongo.InsertOneWriteOpResult<any> = await user.insertOne(_user);
+
         //Rückmeldung dass es funktioniert hat
         if (result.insertedCount == 1) {
-            
+
             return StatusCodes.Good;
         }
         else {
-            
+
             return StatusCodes.BadDatabaseProblem;
         }
     }
+
+    
 }
 
 
 async function loginUser(_email: string, _passwort: string): Promise<StatusCodes> {
 
-    let user: Mongo.Collection = Mongo.MongoClient.db("Formulare").collection("User");
+    console.log("Login");
+
     let userExistCount: number = await user.countDocuments({ "email": _email, "passwort": _passwort });
 
 
@@ -183,29 +200,30 @@ async function loginUser(_email: string, _passwort: string): Promise<StatusCodes
     else {
         return StatusCodes.BadWrongPassword;
     }
-   
+
 }
 
 async function getUsers(): Promise<User[]> {
 
-    let userCollection: Mongo.Collection = mongoClient.db("Formulare").collection("Users");
-    let userDocuments: any[] = await userCollection.find().toArray();
+    console.log("Liste");
 
-    let users: User[] = [];
+    let userDocuments: User[] = await user.find().toArray();
 
-    for (let userDocument of userDocuments) {
+    // let users: User[] = [];
 
-        let user: User = new User(
+    // for (let userDocument of userDocuments) {
 
-            userDocument.vorname as string,
-            userDocument.nachname as string,
-            userDocument.email as string
-        );
+    //     let user: User = {
 
-        users.push(user);
-    }
+    //         "vorname": userDocument.vorname as string,
+    //         "nachname": userDocument.nachname as string,
+    //         "email": userDocument.email as string
+    //     };
 
-    return users;
+    //     users.push(user);
+    // }
+
+    return userDocuments;
 
 }
 

@@ -5,7 +5,7 @@ dataButton.addEventListener("click", getUsers);
 async function getUsers() {
     let response = await fetch(url + "user");
     let users = await response.json();
-    let userDiv = document.getElementById("users");
+    let usersDiv = document.getElementById("users");
     let userCount = 0;
     for (let user of users) {
         let userDiv = document.createElement("div");
@@ -13,8 +13,8 @@ async function getUsers() {
         attributes.set("Vorname: ", user.Vorname);
         attributes.set("Nachname: ", user.Nachname);
         attributes.set("Email ", user.Email);
+        userDiv.appendChild(usersDiv);
+        userCount++;
     }
-    userDiv.appendChild(userDiv);
-    userCount++;
 }
 //# sourceMappingURL=user.js.map

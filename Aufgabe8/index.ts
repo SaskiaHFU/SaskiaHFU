@@ -60,3 +60,13 @@ async function submitToServerRegister(_event: Event): Promise<void> {
  }
 
 
+ //Form clear
+
+let resetButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("resetButton");
+resetButton.addEventListener("click", reset);
+
+function reset(_e: Event): void {
+    registerForm.reset();
+}
+
+

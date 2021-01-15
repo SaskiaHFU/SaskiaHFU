@@ -1,3 +1,11 @@
+//TS für alle unter TS
+
+interface User {
+    "vorname": string;
+    "nachname": string;
+    "email": string;
+    [passwort: string]: string;
+}
 
 const enum StatusCodes {
     Good = 1,
@@ -6,18 +14,11 @@ const enum StatusCodes {
     BadWrongPassword = 4
 }
 
-let url: string = "http://localhost:8100/";
+let url: string = "https://saskiagis2020.herokuapp.com/";
 
 let oldLoginResultText: HTMLParagraphElement;
 
-//Form clear
 
-let resetButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("resetButton");
-resetButton.addEventListener("click", reset);
-
-function reset(_e: Event): void {
-    registerForm.reset();
-}
 
 
 
