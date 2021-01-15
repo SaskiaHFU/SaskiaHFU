@@ -17,7 +17,7 @@ interface Query {
     [type: string]: string;
 }
 
-let databaseUrl: string = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/Saskia?retryWrites=true&w=majority";
+let databaseUrl: string = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/App?retryWrites=true&w=majority";
 let user: Mongo.Collection;
 
 // Status Codes

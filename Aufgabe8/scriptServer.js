@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Http = require("http");
 const Url = require("url");
 const Mongo = require("mongodb");
-let databaseUrl = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/Saskia?retryWrites=true&w=majority";
+let databaseUrl = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/App?retryWrites=true&w=majority";
 let user;
 //Port und Server erstellen
 // let port: number = Number (process.env.PORT); //String zu Int umwandeln
