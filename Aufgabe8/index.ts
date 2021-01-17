@@ -10,10 +10,10 @@ async function submitToServerRegister(_event: Event): Promise<void> {
     let query: URLSearchParams = new URLSearchParams(<any>formData);
 
 
-    url = url + "index" + "?" + query.toString();
-    console.log(url);
+    let queryUrl = url + "index" + "?" + query.toString();
+    console.log(queryUrl);
 
-    let response: Response = await fetch(url);
+    let response: Response = await fetch(queryUrl);
 
     let responseField: HTMLParagraphElement = document.createElement("p");
     
