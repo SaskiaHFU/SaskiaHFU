@@ -20,12 +20,11 @@ async function submitToServerRegister(_event: Event): Promise<void> {
     console.log(response);
 
     
-    //alert("Response: " + responseText);
 
     //Fehler auffangen
     if (response.status != 200) {
         responseField.innerText = "Fehler!";
-
+        
     } 
     else {
 
