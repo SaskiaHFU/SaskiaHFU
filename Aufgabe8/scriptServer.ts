@@ -69,19 +69,6 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
     _response.setHeader("Access-Control-Allow-Origin", "*");
 
     let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-    // if (_request.url) {
-
-
-    //     for (let key in q.query) {
-    //         _response.write(key + ":" + q.query[key] + "<br/>");
-    //     }
-
-    //     let stringJSON: string = JSON.stringify(q.query);
-    //     _response.write(stringJSON);
-
-    //     registerUser(q.query);
-
-    // }
 
     if (q.pathname == "/einloggen") {
 
@@ -129,8 +116,17 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
     }
 
     else {
-        //Fehler auffangen 
-        console.log(_request.url);
+        if (_request.url) {
+
+
+        for (let key in q.query) {
+            _response.write(key + ":" + q.query[key] + "<br/>");
+        }
+
+        let stringJSON: string = JSON.stringify(q.query);
+        _response.write(stringJSON);
+
+    }
     }
 
     _response.end();
