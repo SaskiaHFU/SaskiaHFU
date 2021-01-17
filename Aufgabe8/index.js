@@ -6,12 +6,11 @@ registerButton.addEventListener("click", submitToServerRegister);
 async function submitToServerRegister(_event) {
     let formData = new FormData(document.forms[0]);
     let query = new URLSearchParams(formData);
-    url = url + "?" + query.toString();
-    console.log(url);
-    let response = await fetch(url);
+    let queryUrl = url + "index" + "?" + query.toString();
+    console.log(queryUrl);
+    let response = await fetch(queryUrl);
     let responseField = document.createElement("p");
     console.log(response);
-    //alert("Response: " + responseText);
     //Fehler auffangen
     if (response.status != 200) {
         responseField.innerText = "Fehler!";
