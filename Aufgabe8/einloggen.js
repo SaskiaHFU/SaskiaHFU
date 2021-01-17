@@ -6,8 +6,8 @@ loginButton.addEventListener("click", submitToServerLogin);
 async function submitToServerLogin() {
     let formData = new FormData(document.forms[0]);
     let query = new URLSearchParams(formData);
-    url = url + "?" + query.toString();
-    console.log(url);
+    let queryUrl = url + "einloggen" + "?" + query.toString();
+    console.log(queryUrl);
     let response = await fetch(url);
     let responseField = document.createElement("p");
     //Fehler auffangen
