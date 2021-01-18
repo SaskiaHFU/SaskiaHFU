@@ -65,7 +65,6 @@ function startServer(_port: number | string): void {
 async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
     console.log("I hear voices!");
 
-    _response.setHeader("content-type", "text/html; charset=utf-8");
     _response.setHeader("Access-Control-Allow-Origin", "*");
 
     let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
@@ -155,9 +154,9 @@ async function connectToDatabase(_url: string): Promise<void> {
 async function registerUser(_user: User): Promise<StatusCodes> {
 
     console.log("Registrieren");
-    var userExistCount: number = await user.countDocuments({ "email": _user.email });
+    var countDocuments: number = await user.countDocuments({ "email": _user.email });
 
-    if (userExistCount > 0) {
+    if (countDocuments > 0) {
         // User existiert weil Dokument gefunden also > 0 Dokumente
         return StatusCodes.BadEmailExists;
     }
@@ -184,11 +183,11 @@ async function loginUser(_email: string, _passwort: string): Promise<StatusCodes
 
     console.log("Login");
 
-    let userExistCount: number = await user.countDocuments({ "email": _email, "passwort": _passwort });
+    let countDocuments: number = await user.countDocuments({ "email": _email, "passwort": _passwort });
 
 
     //Rückmeldung dass es funktioniert hat
-    if (userExistCount > 0) {
+    if (countDocuments > 0) {
         // User eingeloggt weil Dokument gefunden also > 0 Dokumente
         return StatusCodes.Good;
     }

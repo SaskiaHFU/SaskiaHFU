@@ -13,7 +13,7 @@ async function getUsers() {
         attributes.set("Vorname: ", user.Vorname);
         attributes.set("Nachname: ", user.Nachname);
         attributes.set("Email ", user.Email);
-        userDiv.appendChild(usersDiv);
+        usersDiv.appendChild(userDiv);
         userCount++;
     }
 }

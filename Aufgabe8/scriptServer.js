@@ -25,7 +25,6 @@ function startServer(_port) {
 //Funktionen
 async function handleRequest(_request, _response) {
     console.log("I hear voices!");
-    _response.setHeader("content-type", "text/html; charset=utf-8");
     _response.setHeader("Access-Control-Allow-Origin", "*");
     let q = Url.parse(_request.url, true);
     if (q.pathname == "/einloggen") {
@@ -82,8 +81,8 @@ async function connectToDatabase(_url) {
 }
 async function registerUser(_user) {
     console.log("Registrieren");
-    var userExistCount = await user.countDocuments({ "email": _user.email });
-    if (userExistCount > 0) {
+    var countDocuments = await user.countDocuments({ "email": _user.email });
+    if (countDocuments > 0) {
         // User existiert weil Dokument gefunden also > 0 Dokumente
         return 3 /* BadEmailExists */;
     }
@@ -100,9 +99,9 @@ async function registerUser(_user) {
 }
 async function loginUser(_email, _passwort) {
     console.log("Login");
-    let userExistCount = await user.countDocuments({ "email": _email, "passwort": _passwort });
+    let countDocuments = await user.countDocuments({ "email": _email, "passwort": _passwort });
     //Rückmeldung dass es funktioniert hat
-    if (userExistCount > 0) {
+    if (countDocuments > 0) {
         // User eingeloggt weil Dokument gefunden also > 0 Dokumente
         return 1 /* Good */;
     }
