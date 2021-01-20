@@ -9,11 +9,12 @@ async function submitToServerLogin(): Promise<void> {
 
     let formData: FormData = new FormData(document.forms[0]);
     let query: URLSearchParams = new URLSearchParams(<any>formData);
-    
+    console.log(query);
+
     let queryUrl: string = url + "einloggen" + "?" + query.toString();
     console.log(queryUrl);
 
-    let response: Response = await fetch(url);
+    let response: Response = await fetch(queryUrl);
 
     let responseField: HTMLParagraphElement = document.createElement("p");
 

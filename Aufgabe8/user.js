@@ -9,10 +9,12 @@ async function getUsers() {
     let userCount = 0;
     for (let user of users) {
         let userDiv = document.createElement("div");
-        let attributes = new Map();
-        attributes.set("Vorname: ", user.Vorname);
-        attributes.set("Nachname: ", user.Nachname);
-        attributes.set("Email ", user.Email);
+        // let attributes: Map <string, string> = new Map <string, string> ();
+        // attributes.set("Vorname: ", user.vorname);
+        // attributes.set("Nachname: ", user.nachname);
+        // attributes.set("Email ", user.email);
+        userDiv.innerText = `vorname: ${user.vorname} ${user.nachname} ${user.email}  `;
+        console.log(user);
         usersDiv.appendChild(userDiv);
         userCount++;
     }

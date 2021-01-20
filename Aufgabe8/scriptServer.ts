@@ -69,6 +69,8 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
 
     let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 
+    console.log(q.pathname);
+    
     if (q.pathname == "/einloggen") {
 
         _response.setHeader("content-type", "text/html; charset=utf-8");

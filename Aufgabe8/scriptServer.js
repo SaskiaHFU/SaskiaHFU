@@ -27,6 +27,7 @@ async function handleRequest(_request, _response) {
     console.log("I hear voices!");
     _response.setHeader("Access-Control-Allow-Origin", "*");
     let q = Url.parse(_request.url, true);
+    console.log(q.pathname);
     if (q.pathname == "/einloggen") {
         _response.setHeader("content-type", "text/html; charset=utf-8");
         let queryParameters = q.query;
