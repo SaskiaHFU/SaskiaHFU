@@ -18,12 +18,12 @@ async function getUsers(): Promise <void> {
 
         let userDiv: HTMLDivElement = document.createElement("div");
 
-        // let attributes: Map <string, string> = new Map <string, string> ();
-        // attributes.set("Vorname: ", user.vorname);
-        // attributes.set("Nachname: ", user.nachname);
-        // attributes.set("Email ", user.email);
-
-        userDiv.innerText = `vorname: ${user.vorname} ${user.nachname} ${user.email}  `;
+        userDiv.innerText = `Vorname: ${user.vorname}  
+                             Nachname: ${user.nachname} 
+                             Email: ${user.email} 
+                             
+                             `;
+        
         console.log(user);
 
         usersDiv.appendChild(userDiv); 

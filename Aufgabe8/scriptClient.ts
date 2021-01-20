@@ -17,6 +17,7 @@ const enum StatusCodes {
 let url: string = "https://saskiagis2020.herokuapp.com/";
 
 //"http://localhost:8100/"
+
 let oldLoginResultText: HTMLParagraphElement;
 
 
