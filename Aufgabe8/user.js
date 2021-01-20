@@ -9,8 +9,8 @@ async function getUsers() {
     let userCount = 0;
     for (let user of users) {
         let userDiv = document.createElement("div");
-        userDiv.innerText = `Vorname: ${user.vorname},  
-                             Nachname: ${user.nachname}, 
+        userDiv.innerText = `Vorname: ${user.vorname}  
+                             Nachname: ${user.nachname} 
                              Email: ${user.email} 
                              
                              `;
