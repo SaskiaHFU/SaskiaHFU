@@ -82,7 +82,7 @@ async function connectToDatabase(_url) {
 }
 async function registerUser(_user) {
     console.log("Registrieren");
-    var countDocuments = await user.countDocuments({ "email": _user.email });
+    let countDocuments = await user.countDocuments({ "email": _user.email });
     if (countDocuments > 0) {
         // User existiert weil Dokument gefunden also > 0 Dokumente
         return 3 /* BadEmailExists */;

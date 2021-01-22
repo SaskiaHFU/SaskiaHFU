@@ -7,11 +7,13 @@ interface User {
     [passwort: string]: string;
 }
 
+
 const enum StatusCodes {
     Good = 1,
     BadDatabaseProblem = 2,
     BadEmailExists = 3,
-    BadWrongPassword = 4
+    BadWrongPassword = 4,
+    BadNameExists
 }
 
 let url: string = "https://saskiagis2020.herokuapp.com/";

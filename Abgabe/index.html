@@ -6,21 +6,25 @@
     <title>Login</title>
     
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <script src="script.js" defer></script>
+    <script src="scriptClient.js" defer></script>
+    <script src="scriptIndex.js" defer></script>
 
 </head>
 <body>  
 <!--Main-->
 
-<div class="col-4" id="kontakt-bereich">
+<div class="col-4" id="login-bereich">
             
-    <h2 id="contact"> Gib deine Daten ein um dich einzuloggen </h2>
+    <h2 id="data"> Gib deine Daten ein um dich einzuloggen </h2>
         <form id="login-form">
             <input class="input-form" placeholder="E-MAIL" type="text" name="email" value placeholder data-validate="unique_email" data-key="user_email">
             <input class="input-form" placeholder="PASSWORT" type="password" name="passwort" value placeholder data-validate data-key="user_passwort">
             <button id="loginButton" name="Absenden" type="button">Einloggen</button>
         </form> 
         <p class="small">Du hast keinen Account? <a href="create_profil.html"> Dann erstelle hier dein Profil</a></p>
+        
+        <div id="serverresult">
+        </div>
 </div>
 </body>
 </html>

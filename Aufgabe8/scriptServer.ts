@@ -156,7 +156,7 @@ async function connectToDatabase(_url: string): Promise<void> {
 async function registerUser(_user: User): Promise<StatusCodes> {
 
     console.log("Registrieren");
-    var countDocuments: number = await user.countDocuments({ "email": _user.email });
+    let countDocuments: number = await user.countDocuments({ "email": _user.email });
 
     if (countDocuments > 0) {
         // User existiert weil Dokument gefunden also > 0 Dokumente

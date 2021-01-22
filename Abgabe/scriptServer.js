@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Http = require("http");
 const Url = require("url");
 const Mongo = require("mongodb");
-let databaseUrl = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/App?retryWrites=true&w=majority";
+let databaseUrl = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/Charlan?retryWrites=true&w=majority";
 let user;
 //Port und Server erstellen
 // let port: number = Number (process.env.PORT); //String zu Int umwandeln
@@ -41,9 +41,10 @@ async function handleRequest(_request, _response) {
         _response.setHeader("content-type", "text/html; charset=utf-8");
         let queryParameters = q.query;
         let user = {
-            "vorname": queryParameters.vorname,
-            "nachname": queryParameters.nachname,
-            "email": queryParameters.email
+            "Name": queryParameters.name,
+            "Studiengang": queryParameters.studiengang,
+            "Semester": queryParameters.semester,
+            "Email": queryParameters.email
         };
         //Passwort extra weil es nicht im Datenbank Profil stehen soll
         user.passwort = queryParameters.passwort;
@@ -87,10 +88,14 @@ async function connectToDatabase(_url, _collection) {
 async function registerUser(_user) {
     console.log("Registrieren");
     connectToDatabase(databaseUrl, "User");
-    var countDocuments = await user.countDocuments({ "email": _user.email });
-    if (countDocuments > 0) {
+    let countDocumentsEmail = await user.countDocuments({ "email": _user.email });
+    let countDocumentsName = await user.countDocuments({ "email": _user.name });
+    if (countDocumentsEmail > 0) {
         // User existiert weil Dokument gefunden also > 0 Dokumente
         return 3 /* BadEmailExists */;
+    }
+    else if (countDocumentsName > 0) {
+        return 5 /* BadNameExists */;
     }
     else {
         let result = await user.insertOne(_user);
@@ -109,7 +114,6 @@ async function loginUser(_email, _passwort) {
     let countDocuments = await user.countDocuments({ "email": _email, "passwort": _passwort });
     //Rückmeldung dass es funktioniert hat
     if (countDocuments > 0) {
-        // User eingeloggt weil Dokument gefunden also > 0 Dokumente
         return 1 /* Good */;
     }
     else {

@@ -352,7 +352,7 @@ label {
 }
 
 
-#kontakt-bereich {
+#login-bereich, #register-bereich {
         display: block;
         margin-left: auto;
         margin-right: auto;

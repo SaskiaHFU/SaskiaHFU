@@ -6,9 +6,10 @@ import * as Mongo from "mongodb";
 
 interface User {
 
-    "vorname": string;
-    "nachname": string;
-    "email": string;
+    "Name": string;
+    "Studiengang": string;
+    "Semester": string;
+    "Email": string;
     [passwort: string]: string;
 
 }
@@ -17,7 +18,7 @@ interface Query {
     [type: string]: string;
 }
 
-let databaseUrl: string = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/App?retryWrites=true&w=majority";
+let databaseUrl: string = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/Charlan?retryWrites=true&w=majority";
 let user: Mongo.Collection;
 
 // Status Codes
@@ -26,7 +27,8 @@ const enum StatusCodes {
     Good = 1,
     BadDatabaseProblem = 2,
     BadEmailExists = 3,
-    BadWrongPassword = 4
+    BadWrongPassword = 4,
+    BadNameExists = 5
 }
 
 
@@ -89,13 +91,14 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
 
         _response.setHeader("content-type", "text/html; charset=utf-8");
 
-        let queryParameters: Query = <Query>q.query;
+        let queryParameters: Query = <Query> q.query;
 
         let user: User = {
 
-            "vorname": queryParameters.vorname as string,
-            "nachname": queryParameters.nachname as string,
-            "email": queryParameters.email as string
+            "Name": queryParameters.name as string,
+            "Studiengang": queryParameters.studiengang as string,
+            "Semester": queryParameters.semester as string,
+            "Email": queryParameters.email as string
 
         };
         //Passwort extra weil es nicht im Datenbank Profil stehen soll
@@ -163,12 +166,16 @@ async function registerUser(_user: User): Promise<StatusCodes> {
     console.log("Registrieren");
 
     connectToDatabase(databaseUrl, "User");
-    var countDocuments: number = await user.countDocuments({ "email": _user.email });
+    let countDocumentsEmail: number = await user.countDocuments({ "email": _user.email });
+    let countDocumentsName: number = await user.countDocuments({ "email": _user.name });
 
-    if (countDocuments > 0) {
+    if (countDocumentsEmail > 0) {
         // User existiert weil Dokument gefunden also > 0 Dokumente
         return StatusCodes.BadEmailExists;
     }
+    else if (countDocumentsName > 0) {
+        return StatusCodes.BadNameExists;
+    } 
     else {
 
         let result: Mongo.InsertOneWriteOpResult<any> = await user.insertOne(_user);
@@ -196,7 +203,6 @@ async function loginUser(_email: string, _passwort: string): Promise<StatusCodes
 
     //Rückmeldung dass es funktioniert hat
     if (countDocuments > 0) {
-        // User eingeloggt weil Dokument gefunden also > 0 Dokumente
         return StatusCodes.Good;
     }
 

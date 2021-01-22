@@ -7,18 +7,20 @@
     
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <script src="script.js" defer></script>
+    <script src="scriptClient.js" defer></script>
+    <script src="scriptCreateProfil.js" defer></script>
 
 </head>
 <body>  
 <!--Main-->
 
-<div class="col-4" id="kontakt-bereich">
+<div class="col-4" id="register-bereich">
             
-    <h2 id="contact"> Gib deine Daten ein um dich zu registrieren </h2>
-        <form id="message-form">
+    <h2 id="data"> Gib deine Daten ein um dich zu registrieren </h2>
+
+        <form id="register-form">
             <label for="vorname"> Vorname </label>
-            <input class="input-form" type="text" name="vorname" data-key="vorname">
+            <input class="input-form" type="text" name="name" data-key="name">
             <label for="studiengang"> Studiengang </label>
             <input class="input-form" type="text" name="studiengang" data-key="studiengang">
             <label for="semesterangabe"> Semesterangabe </label>
@@ -30,7 +32,10 @@
             
             <button id="loginButton" name="Absenden" type="button">Registrieren</button>
         </form> 
+        <p class="small">Du hast doch schon ein Profil? Dann klicke <a href="index.html">Hier</a> um dich einzuloggen !</p>
         
+        <div id="serverresult">
+        </div>
 </div>
 </body>
 </html>
