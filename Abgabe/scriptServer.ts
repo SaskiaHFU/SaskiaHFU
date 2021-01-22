@@ -17,7 +17,7 @@ interface Query {
     [type: string]: string;
 }
 
-let databaseUrl: string = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/Formulare?retryWrites=true&w=majority";
+let databaseUrl: string = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/App?retryWrites=true&w=majority";
 let user: Mongo.Collection;
 
 // Status Codes
@@ -44,7 +44,7 @@ if (port == undefined) { // || isNaN(port)
 
 
 startServer(port);
-connectToDatabase(databaseUrl);
+
 
 
 
@@ -59,8 +59,11 @@ function startServer(_port: number | string): void {
     server.addListener("listening", handleListen);
 }
 
+// Funktionen
 
-//Funktionen
+function handleListen(): void {
+    console.log("Listening");
+}
 
 async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
     console.log("I hear voices!");
@@ -71,7 +74,7 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
 
     console.log(q.pathname);
     
-    if (q.pathname == "/einloggen") {
+    if (q.pathname == "/index") {
 
         _response.setHeader("content-type", "text/html; charset=utf-8");
         let queryParameters: Query = <Query>q.query;
@@ -82,7 +85,7 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
         console.log("einloggen Seite");
 
     }
-    else if (q.pathname == "/index") {
+    else if (q.pathname  == "/create_profil") {
 
         _response.setHeader("content-type", "text/html; charset=utf-8");
 
@@ -104,8 +107,16 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
 
         console.log("Registrieren Seite");
     }
+    else if (q.pathname == "hauptseite") {
 
-    else if (q.pathname == "/user") {
+        //
+    }
+    else if (q.pathname == "/profil") {
+
+        //
+    }
+
+    else if (q.pathname == "/follower") {
 
         _response.setHeader("content-type", "application/json; charset=utf-8");
 
@@ -134,13 +145,7 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
 
 }
 
-function handleListen(): void {
-    console.log("Listening");
-}
-
-//Datenbank functions
-
-async function connectToDatabase(_url: string): Promise<void> {
+async function connectToDatabase(_url: string, _collection: string): Promise<void> {
     console.log("Connected to Database");
 
     //Create Mongo Client
@@ -149,13 +154,15 @@ async function connectToDatabase(_url: string): Promise<void> {
     await mongoClient.connect();
     console.log("Connected to Client");
 
-    user = mongoClient.db("Formulare").collection("User");
+    user = mongoClient.db("Charlan").collection(_collection);
     console.log("Database connection", user != undefined);
 }
 
 async function registerUser(_user: User): Promise<StatusCodes> {
 
     console.log("Registrieren");
+
+    connectToDatabase(databaseUrl, "User");
     var countDocuments: number = await user.countDocuments({ "email": _user.email });
 
     if (countDocuments > 0) {
@@ -178,10 +185,11 @@ async function registerUser(_user: User): Promise<StatusCodes> {
     }   
 }
 
-
 async function loginUser(_email: string, _passwort: string): Promise<StatusCodes> {
 
     console.log("Login");
+
+    connectToDatabase(url, "User");
 
     let countDocuments: number = await user.countDocuments({ "email": _email, "passwort": _passwort });
 
@@ -198,29 +206,19 @@ async function loginUser(_email: string, _passwort: string): Promise<StatusCodes
 
 }
 
+
 async function getUsers(): Promise<User[]> {
 
     console.log("Liste");
 
     let userDocuments: User[] = await user.find().toArray();
 
-    // let users: User[] = [];
-
-    // for (let userDocument of userDocuments) {
-
-    //     let user: User = {
-
-    //         "vorname": userDocument.vorname as string,
-    //         "nachname": userDocument.nachname as string,
-    //         "email": userDocument.email as string
-    //     };
-
-    //     users.push(user);
-    // }
-
     return userDocuments;
 
 }
+    
+    
+
 
 
 

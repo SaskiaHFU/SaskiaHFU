@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrieren</title>
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="script.js" defer></script>
+
+</head>
+<body>  
+<!--Main-->
+
+<div class="col-4" id="kontakt-bereich">
+            
+    <h2 id="contact"> Gib deine Daten ein um dich zu registrieren </h2>
+        <form id="message-form">
+            <label for="vorname"> Vorname </label>
+            <input class="input-form" type="text" name="vorname" data-key="vorname">
+            <label for="studiengang"> Studiengang </label>
+            <input class="input-form" type="text" name="studiengang" data-key="studiengang">
+            <label for="semesterangabe"> Semesterangabe </label>
+            <input class="input-form" type="text" name="semesterangabe" data-key="semesterangabe">
+            <label for="email"> Email </label>
+            <input class="input-form" type="text" name="email" value placeholder data-validate="unique_email" data-key="user_email">
+            <label for="passwort"> Passwort </label>
+            <input class="input-form" type="password" name="passwort" value placeholder data-validate data-key="user_passwort">
+            
+            <button id="loginButton" name="Absenden" type="button">Registrieren</button>
+        </form> 
+        
+</div>
+</body>
+</html>
