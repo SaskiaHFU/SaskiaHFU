@@ -48,7 +48,7 @@ if (port == undefined) { // || isNaN(port)
 
 
 startServer(port);
-
+connectToDatabase(databaseUrl);
 
 
 
@@ -170,7 +170,7 @@ async function registerUser(_user: User): Promise<StatusCodes> {
     // connectToDatabase(databaseUrl, "User");
 
     let countDocumentsEmail: number = await user.countDocuments({ "email": _user.email });
-    let countDocumentsName: number = await user.countDocuments({ "name": _user.name });
+    // let countDocumentsName: number = await user.countDocuments({ "name": _user.name });
 
     if (countDocumentsEmail > 0) {
         // User existiert weil Dokument gefunden also > 0 Dokumente
@@ -199,7 +199,7 @@ async function loginUser(_email: string, _passwort: string): Promise<StatusCodes
 
     console.log("Login");
 
-    connectToDatabase(url, "User");
+    // connectToDatabase(url, "User");
 
     let countDocuments: number = await user.countDocuments({ "email": _email, "passwort": _passwort });
 

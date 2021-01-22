@@ -14,6 +14,7 @@ if (port == undefined) { // || isNaN(port)
 }
 // Funktionen aufrufen
 startServer(port);
+connectToDatabase(databaseUrl);
 function startServer(_port) {
     //Server erstellen
     let server = Http.createServer();
@@ -91,7 +92,7 @@ async function registerUser(_user) {
     console.log("Registrieren");
     // connectToDatabase(databaseUrl, "User");
     let countDocumentsEmail = await user.countDocuments({ "email": _user.email });
-    let countDocumentsName = await user.countDocuments({ "name": _user.name });
+    // let countDocumentsName: number = await user.countDocuments({ "name": _user.name });
     if (countDocumentsEmail > 0) {
         // User existiert weil Dokument gefunden also > 0 Dokumente
         return 3 /* BadEmailExists */;
@@ -112,7 +113,7 @@ async function registerUser(_user) {
 }
 async function loginUser(_email, _passwort) {
     console.log("Login");
-    connectToDatabase(url, "User");
+    // connectToDatabase(url, "User");
     let countDocuments = await user.countDocuments({ "email": _email, "passwort": _passwort });
     //Rückmeldung dass es funktioniert hat
     if (countDocuments > 0) {
