@@ -1,13 +1,22 @@
 //Shared TS
 
-
-let loginForm: HTMLFormElement = <HTMLFormElement>document.getElementById("login-form");
-
-let loginButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("loginButton");
-registerButton.addEventListener("click", submitToServer);
-
-let loginURL: string = "https://saskiagis2020-pruefung.herokuapp.com/";
+let mainURL: string = "https://saskiagis2020-pruefung.herokuapp.com/";
 //"http://localhost:8100/"
+
+let changeLoginResult: HTMLParagraphElement;
+
+//Funktionen
+
+let clearButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("resetButton");
+clearButton.addEventListener("click", clear);
+
+function clear (_e: Event): void {
+    registerForm.reset();
+}
+
+
+
+
 
 
 

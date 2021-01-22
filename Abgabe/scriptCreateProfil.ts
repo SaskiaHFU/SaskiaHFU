@@ -10,7 +10,7 @@ async function submitRegister(_event: Event): Promise<void> {
     let query: URLSearchParams = new URLSearchParams(<any>formData);
 
 
-    let queryUrl: string = url + "create_profil" + "?" + query.toString();
+    let queryUrl: string = mainURL + "create_profil" + "?" + query.toString();
     console.log(queryUrl);
 
     let response: Response = await fetch(queryUrl);
@@ -52,11 +52,11 @@ async function submitRegister(_event: Event): Promise<void> {
 
     //Antwort anzeigen
     let serverResult: HTMLElement = document.getElementById("serverresult");
-    if (oldLoginResultText != undefined) {
-        serverResult.replaceChild(responseField, oldLoginResultText);
+    if (changeLoginResult != undefined) {
+        serverResult.replaceChild(responseField, changeLoginResult);
     }
     else {
         serverResult.appendChild(responseField);         
     }
-    oldLoginResultText = responseField;
+    changeLoginResult = responseField;
  }

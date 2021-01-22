@@ -11,7 +11,7 @@ async function submitLogin(): Promise<void> {
     let query: URLSearchParams = new URLSearchParams(<any>formData);
     console.log(query);
 
-    let queryUrl: string = url + "index" + "?" + query.toString();
+    let queryUrl: string = mainURL + "index" + "?" + query.toString();
     console.log(queryUrl);
 
     let response: Response = await fetch(queryUrl);
@@ -40,22 +40,12 @@ async function submitLogin(): Promise<void> {
     //Antwort anzeigen
    
     let serverResult: HTMLElement = document.getElementById("serverresult");
-    if (oldLoginResultText != undefined) {
-        serverResult.replaceChild(responseField, oldLoginResultText);
+    if (changeLoginResult != undefined) {
+        serverResult.replaceChild(responseField, changeLoginResult);
     }
     else {
         serverResult.appendChild(responseField);         
     }
-    oldLoginResultText = responseField;
+    changeLoginResult = responseField;
 
-}
-
-
-
-//Clear Form
-let resetButton1: HTMLButtonElement = <HTMLButtonElement>document.getElementById("resetButton");
-resetButton1.addEventListener("click", reset);
-
-function reset(_e: Event): void {
-    registerForm.reset();
 }

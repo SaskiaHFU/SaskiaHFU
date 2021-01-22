@@ -6,7 +6,7 @@ registerButton1.addEventListener("click", submitRegister);
 async function submitRegister(_event) {
     let formData = new FormData(document.forms[0]);
     let query = new URLSearchParams(formData);
-    let queryUrl = url + "create_profil" + "?" + query.toString();
+    let queryUrl = mainURL + "create_profil" + "?" + query.toString();
     console.log(queryUrl);
     let response = await fetch(queryUrl);
     let responseField = document.createElement("p");
@@ -34,12 +34,12 @@ async function submitRegister(_event) {
     }
     //Antwort anzeigen
     let serverResult = document.getElementById("serverresult");
-    if (oldLoginResultText != undefined) {
-        serverResult.replaceChild(responseField, oldLoginResultText);
+    if (changeLoginResult != undefined) {
+        serverResult.replaceChild(responseField, changeLoginResult);
     }
     else {
         serverResult.appendChild(responseField);
     }
-    oldLoginResultText = responseField;
+    changeLoginResult = responseField;
 }
 //# sourceMappingURL=scriptCreateProfil.js.map

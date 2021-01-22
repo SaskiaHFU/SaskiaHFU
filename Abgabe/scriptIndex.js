@@ -7,7 +7,7 @@ async function submitLogin() {
     let formData = new FormData(document.forms[0]);
     let query = new URLSearchParams(formData);
     console.log(query);
-    let queryUrl = url + "index" + "?" + query.toString();
+    let queryUrl = mainURL + "index" + "?" + query.toString();
     console.log(queryUrl);
     let response = await fetch(queryUrl);
     let responseField = document.createElement("p");
@@ -27,18 +27,12 @@ async function submitLogin() {
     }
     //Antwort anzeigen
     let serverResult = document.getElementById("serverresult");
-    if (oldLoginResultText != undefined) {
-        serverResult.replaceChild(responseField, oldLoginResultText);
+    if (changeLoginResult != undefined) {
+        serverResult.replaceChild(responseField, changeLoginResult);
     }
     else {
         serverResult.appendChild(responseField);
     }
-    oldLoginResultText = responseField;
-}
-//Clear Form
-let resetButton1 = document.getElementById("resetButton");
-resetButton1.addEventListener("click", reset);
-function reset(_e) {
-    registerForm.reset();
+    changeLoginResult = responseField;
 }
 //# sourceMappingURL=scriptIndex.js.map

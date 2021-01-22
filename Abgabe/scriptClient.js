@@ -1,8 +1,12 @@
 "use strict";
 //Shared TS
-let loginForm = document.getElementById("login-form");
-let loginButton = document.getElementById("loginButton");
-registerButton.addEventListener("click", submitToServer);
-let loginURL = "https://saskiagis2020-pruefung.herokuapp.com/";
+let mainURL = "https://saskiagis2020-pruefung.herokuapp.com/";
 //"http://localhost:8100/"
+let changeLoginResult;
+//Funktionen
+let clearButton = document.getElementById("resetButton");
+clearButton.addEventListener("click", clear);
+function clear(_e) {
+    registerForm.reset();
+}
 //# sourceMappingURL=scriptClient.js.map
