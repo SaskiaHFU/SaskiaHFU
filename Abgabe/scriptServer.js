@@ -5,6 +5,7 @@ const Url = require("url");
 const Mongo = require("mongodb");
 let databaseUrl = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/Charlan?retryWrites=true&w=majority";
 let user;
+connectToDatabase(databaseUrl);
 //Port und Server erstellen
 // let port: number = Number (process.env.PORT); //String zu Int umwandeln
 let port = process.env.PORT;
@@ -75,28 +76,29 @@ async function handleRequest(_request, _response) {
     }
     _response.end();
 }
-async function connectToDatabase(_url, _collection) {
+async function connectToDatabase(_url) {
     console.log("Connected to Database");
+    //_collection: string
     //Create Mongo Client
     let options = { useNewUrlParser: true, useUnifiedTopology: true };
     let mongoClient = new Mongo.MongoClient(databaseUrl, options);
     await mongoClient.connect();
     console.log("Connected to Client");
-    user = mongoClient.db("Charlan").collection(_collection);
+    user = mongoClient.db("Charlan").collection("User");
     console.log("Database connection", user != undefined);
 }
 async function registerUser(_user) {
     console.log("Registrieren");
-    connectToDatabase(databaseUrl, "User");
+    // connectToDatabase(databaseUrl, "User");
     let countDocumentsEmail = await user.countDocuments({ "email": _user.email });
-    let countDocumentsName = await user.countDocuments({ "email": _user.name });
+    let countDocumentsName = await user.countDocuments({ "name": _user.name });
     if (countDocumentsEmail > 0) {
         // User existiert weil Dokument gefunden also > 0 Dokumente
         return 3 /* BadEmailExists */;
     }
-    else if (countDocumentsName > 0) {
-        return 5 /* BadNameExists */;
-    }
+    // else if (countDocumentsName > 0) {
+    //     return StatusCodes.BadNameExists;
+    // } 
     else {
         let result = await user.insertOne(_user);
         //Rückmeldung dass es funktioniert hat

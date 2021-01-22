@@ -21,6 +21,8 @@ interface Query {
 let databaseUrl: string = "mongodb+srv://Saskia:12345@clustersaskia.vxxmf.mongodb.net/Charlan?retryWrites=true&w=majority";
 let user: Mongo.Collection;
 
+connectToDatabase(databaseUrl);
+
 // Status Codes
 
 const enum StatusCodes {
@@ -148,16 +150,16 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
 
 }
 
-async function connectToDatabase(_url: string, _collection: string): Promise<void> {
+async function connectToDatabase(_url: string): Promise<void> {
     console.log("Connected to Database");
-
+//_collection: string
     //Create Mongo Client
     let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options);
     await mongoClient.connect();
     console.log("Connected to Client");
 
-    user = mongoClient.db("Charlan").collection(_collection);
+    user = mongoClient.db("Charlan").collection("User");
     console.log("Database connection", user != undefined);
 }
 
@@ -165,17 +167,18 @@ async function registerUser(_user: User): Promise<StatusCodes> {
 
     console.log("Registrieren");
 
-    connectToDatabase(databaseUrl, "User");
+    // connectToDatabase(databaseUrl, "User");
+
     let countDocumentsEmail: number = await user.countDocuments({ "email": _user.email });
-    let countDocumentsName: number = await user.countDocuments({ "email": _user.name });
+    let countDocumentsName: number = await user.countDocuments({ "name": _user.name });
 
     if (countDocumentsEmail > 0) {
         // User existiert weil Dokument gefunden also > 0 Dokumente
         return StatusCodes.BadEmailExists;
     }
-    else if (countDocumentsName > 0) {
-        return StatusCodes.BadNameExists;
-    } 
+    // else if (countDocumentsName > 0) {
+    //     return StatusCodes.BadNameExists;
+    // } 
     else {
 
         let result: Mongo.InsertOneWriteOpResult<any> = await user.insertOne(_user);
