@@ -22,9 +22,9 @@ async function submitRegister(_event) {
         if (statusCode == 3 /* BadEmailExists */) {
             responseField.innerText = "E-Mail ist schon vorhanden!";
         }
-        else if (statusCode == 5 /* BadNameExists */) {
-            responseField.innerText = "Dieser Name existiert bereits!";
-        }
+        // else if (statusCode == StatusCodes.BadNameExists){
+        //     responseField.innerText = "Dieser Name existiert bereits!";
+        // }
         else if (statusCode == 1 /* Good */) {
             responseField.innerText = "Du bist Registiert!";
         }
