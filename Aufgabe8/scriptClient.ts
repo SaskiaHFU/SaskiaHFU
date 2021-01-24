@@ -12,8 +12,7 @@ const enum StatusCodes {
     Good = 1,
     BadDatabaseProblem = 2,
     BadEmailExists = 3,
-    BadWrongPassword = 4,
-    BadNameExists
+    BadWrongPassword = 4
 }
 
 let url: string = "https://saskiagis2020.herokuapp.com/";
